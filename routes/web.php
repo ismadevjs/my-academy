@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\EstimaraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,10 @@ Route::prefix('/')->group(function() {
     Route::prefix('students')->group(function() {
         Route::get('/', [StudentsController::class, 'dashboard'])->name('students.dashboard');
     });
+    
+    //Estimara
+    Route::prefix('estimara')->group(function() {
+        Route::get('/', [EstimaraController::class, 'step1'])->name('estimara.step1');
+    });
+
 });
