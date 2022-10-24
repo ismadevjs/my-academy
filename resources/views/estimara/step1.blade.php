@@ -104,6 +104,16 @@
                                     <input type="text" name="name" id="name"
                                         class="form-control required" onchange="getVals(this, 'name_field');">
                                 </div>
+                                <div class="form-group add_top_30">
+                                    <label for="name">تاريخ ومكان الازدياد</label>
+                                    <input type="text" name="name" id="name"
+                                        class="form-control required" onchange="getVals(this, 'name_field');">
+                                </div>
+                                <div class="form-group add_top_30">
+                                    <label for="name">العنوان</label>
+                                    <input type="text" name="name" id="name"
+                                        class="form-control required" onchange="getVals(this, 'name_field');">
+                                </div>
                                 <div class="form-group">
                                     <label for="email">البريد الالكتروني (الايميل)</label>
                                     <input type="email" name="email" id="email"
@@ -126,7 +136,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group add_bottom_30 add_top_20">
-                                    <label>الصورة الشخصية<br><small></small></label>
+                                    <label>صورة شمسية<br><small></small></label>
                                     <div class="fileupload">
                                         <input type="file" name="fileupload"
                                             accept=".pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -138,8 +148,8 @@
 
                             <!-- /Start Branch ============================== -->
                             <div class="step" data-state="branchtype">
-                                <h2 class="section_title">Work Availability</h2>
-                                <h3 class="main_question">Are you available for work?</h3>
+                                <h2 class="section_title">معلومات التسجيل></h2>
+                                <h3 class="main_question">...</h3>
                                 <div class="form-group">
                                     <label class="container_radio version_2">Full time availability
                                         <input type="radio" name="availability" value="Full-time"
