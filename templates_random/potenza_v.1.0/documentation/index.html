@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		pre,code { font-family:"Consolas", Courier New, Courier, monospace; padding:15px; background:#f7f7f7; margin:0px 0px 18px; border:1px solid #e5e5e5; line-height:18px; color:#000 }
+code { padding:0px 3px; background-image:none; background:#f5f5f5; border:none }
+pre { white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; word-wrap:break-word }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	  <h3 class="center alt"> Documentation by &ldquo;Ansonika&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;POTENZA - HTML Site template&rdquo;</h1>
+		
+		<div class="borderTop">
+		  <div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 19 March 2020<br>
+                    Last update: -<br>
+					By: Ansonika</strong>
+			  </p>
+	    </div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my theme. If you are happy with the theme, please <strong>TAKE A MOMENT TO RATE IT</strong> from your DOWNLOADS PAGE.
+Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files, Structure and basic modifications</a></li>
+<li><a href="#php">PHP contact form, newsltetter form and plan a visit form</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#credits">Sources and Credit</a></li>
+            <li><a href="#updates">UPDATES</a></li>
+		</ol>
+
+      <hr>
+        
+  <h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+	  <p> This theme has a fixed centered layout 1170px. It's based on Boostrap framework grid. It's ULTRA RESPONSIVE!!<br>
+     Every type of company can create Job Application Forms Wizard or interview in order to speed up the recruitment process. It comes with a file upload feature to collect the Resume pdf or doc of each candidate; it have also nice UI/UX form elements design: radio, checkbox, select, float labels. Branch Wizard Support: user view differen steps based on the answer provided. The results will be sent via email and confirmation email is sent to the user who fill the form. At the moment comes with 3 demo versions.</p>
+<hr>
+
+		<h3 id="cssFiles"><strong>B) CSS Files Structure and basic modfication</strong> - <a href="#toc">top</a>	  </h3>
+	  <p>The css files are inside the css folder (not minified and minified versions included) .To modify colors, typografy, button style ecc....find the realtive comment line in style.css. 
+      <strong>We reccomend to apply every changes in css/custom.css in order to makes future updates easly to apply.</strong>
+      Below how the file is organized:</p>
+<p>1. SITE STRUCTURE and TYPOGRAPHY<br>
+  - 1.1 Typography<br>
+  - 1.2 Buttons<br>
+  - 1.3 Structure</p>
+<p>2. CONTENT<br>
+  - 2.1 Wizard<br>
+  - 2.2 Success submit<br>
+  - 2.3 Inner pages</p>
+<p>3. COMMON<br>
+  - 3.1 Misc<br>
+  - 3.2 Spacing<br>
+  - 3.3 Float Labels</p>
+
+<p><strong>Change the logo<br>
+</strong>To change the logo, simply use your PNG24 file (suggested logo height is 45px). </p>
+
+  
+
+<p><strong>
+    Add one more step to the wizard</strong><br>
+Each step is defined by a div, so simply duplicate one of them. Below an example of the structure:</p>
+  <pre>&lt;div class=&quot;step&quot;&gt;
+	your content....                <br>&lt;/div&gt;&lt;!-- end step--&gt;</pre>
+    
+    <p><strong>Make an input field, select or radio/checkbox required or not.</strong><br>
+Simply add or remove the class "required" to the element. To change the error message go to js/common_script.js and under the section jQuery Validation Plugin at line 4957 aprox, then recreate the minfied version.<br>
+<br>
+   Add one more questions with checkbox answer</strong><br>
+   Open the HTML page. As you can see the name of the input has to be the same with at the end [], each one have a different value. in the example below we add 2 more checkbox questions: </p>
+  <pre>&lt;h3&gt;Question?&lt;/h3&gt; <br>
+&lt;div class=&quot;form-group&quot;&gt;<br>&lt;label class=&quot;container_check version_2&quot;&gt;Custom interface and layout
+&lt;input type=&quot;checkbox&quot; value=&quot;Custom interface and layout&quot; name=&quot;experience_1[]&quot; class=&quot;required&quot;&gt;
+&lt;/label&gt;<br>&lt;/div&gt;<br>
+&lt;div class=&quot;form-group&quot;&gt;<br>&lt;label class=&quot;container_check version_2&quot;&gt;Web site design
+&lt;input type=&quot;checkbox&quot; value=&quot;Web&quot; name=&quot;experience_1[]&quot; class=&quot;required&quot;&gt;
+&lt;/label&gt;<br>&lt;/div&gt;
+
+$message .= &quot;\n1) Question?\n&quot; ;<br>foreach($_POST[experience_1] as $value) <br>{ <br>	$message .=   &quot;- &quot; .  trim(stripslashes($value)) . &quot;\n&quot;; <br>};<br></pre>
+
+<p><strong>Antispam protection</strong>:<br>spam bots usually disable javascripts to avoid the jquery validation or automatically fill all the input fields and send the email. Now the php submission script link is removed from the html and placed inside the the js script. So if the js will be disabled, the form will be not processed. The js script check also if the hidden input field (id website) is filled by the spam bot...if filled the form will be not processed.
+<pre>LEAVE THE HIDDEN INPUT FIELD WEBSITE for the reason above<br>&lt;input id=&quot;website&quot; name=&quot;website&quot; type=&quot;text&quot; value=&quot;&quot;&gt;
+</pre>
+
+<p><strong>How fileupload feature works</strong>:
+  <pre>In this example we set the filesize limit to 2Mb (first ask to your host which the is the default upload limit)
+
+1) Open js/func_1.js and edit these lines below to validate the file upload to the correct file size limit.
+
+$(&quot;form#wrapped&quot;)<br>
+....
+<strong>
+maxFileSize: {<br>&quot;unit&quot;: &quot;MB&quot;,<br>&quot;size&quot;: 2<br>},</strong>
+
+2) Open send_email_1.php and edit these line below
+<strong>
+if($file_size &gt; 2097152){<br>$errors[]='File size must be max &quot;2Mb&quot;';<br>}</strong>
+
+Note that the file size must be in bytes; 2Mb=2097152bytes. <br>Use this tool to convert the file size param https://www.thecalculator.co/others/File-Size-Converter-69.html
+
+3) On your host upload or create a folder upload_files and with your ftp client set the persmission to 755 for this folder.</pre>
+
+ <p><strong>
+    Wizard with single branch (take as reference index.html + send_email_1.php)</strong><br></p>
+  <pre>
+In this demo there are 3 branches. Each targeted step is defined by the <strong>class=&quot;branch&quot;</strong>,<br>the <strong>input value</strong> as the <strong>step id</strong>. 
+Of course is radio based, so you have to give the same input name to the radios.
+
+ &lt;!-- /Start Branch ============================== --&gt;<br>&lt;div class=&quot;step&quot; <strong>data-state=&quot;branchtype&quot;</strong>&gt;<br>	                         <br>&lt;div class=&quot;form-group&quot;&gt;<br>&lt;label class=&quot;container_radio version_2&quot;&gt;Full time availability<br>&lt;input type=&quot;radio&quot; name=&quot;availability&quot; <strong>value=&quot;Full-time&quot;</strong> class=&quot;required&quot;&gt;<br>&lt;span class=&quot;checkmark&quot;&gt;&lt;/span&gt;<br>&lt;/label&gt;<br>&lt;label class=&quot;container_radio version_2&quot;&gt;Part time availability<br>&lt;input type=&quot;radio&quot; name=&quot;availability&quot; <strong>value=&quot;Part-time&quot;</strong> class=&quot;required&quot;&gt;<br>&lt;span class=&quot;checkmark&quot;&gt;&lt;/span&gt;<br>&lt;/label&gt;<br>&lt;label class=&quot;container_radio version_2&quot;&gt;Freelance / Contract availability<br>&lt;input type=&quot;radio&quot; name=&quot;availability&quot;<strong> value=&quot;Freelance-Contract&quot;</strong> class=&quot;required&quot;&gt;<br>&lt;span class=&quot;checkmark&quot;&gt;&lt;/span&gt;<br>&lt;/label&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;
+
+&lt;!-- /Work Availability &gt; Full-time ============================== --&gt;<br>&lt;div <strong>class=&quot;branch&quot;</strong> <strong>id=&quot;Full-time&quot;</strong>&gt;<br>  &lt;div class=&quot;step&quot; <strong>data-state=&quot;end&quot;</strong>&gt;
+		...
+	&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;!-- /step--&gt;
+
+&lt;!-- /Work Availability &gt; Part-time ============================== --&gt;<br>&lt;div <strong>class=&quot;branch&quot;</strong> <strong>id=&quot;Part-time&quot;</strong>&gt;<br>  &lt;div class=&quot;step&quot; <strong>data-state=&quot;end&quot;</strong>&gt;
+		...
+	&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;!-- /step--&gt;
+
+&lt;!-- /Work Availability &gt; Freelance-Contract ============================== --&gt;<br>&lt;div <strong>class=&quot;branch&quot;</strong> <strong>id=&quot;Freelance-contract&quot;</strong>&gt;<br>  &lt;div class=&quot;step&quot; <strong>data-state=&quot;end&quot;</strong>&gt;
+		...
+	&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;!-- /step--&gt;
+
+<strong>data-state=&quot;end&quot;</strong> define the target of the each step (could be also another intermediate step).
+
+
+PHP FILE<br>A particular mention to this script portion<br>
+<em>This portion tell to send only the results of if the input has been filled..</em><br>if (isset($_POST['minimum_salary_full_time']) &amp;&amp; $_POST['minimum_salary_full_time'] != &quot;&quot;)<br>			{<br>				<br>			}
+
+<em>This portion is a simple checkboxes results. </em>
+if (isset($_POST['experience_1']) &amp;&amp; $_POST['experience_1'] != &quot;&quot;)<br>		{<br>		$message .= &quot;\nSpecialities:\n&quot;;<br>		foreach($_POST['experience_1'] as $value)<br>			{<br>				$message.= &quot;- &quot; . trim(stripslashes($value)) . &quot;\n&quot;;<br>			};<br>		}<br></pre>
+
+
+<p><strong>THE GRID</strong><br> 
+      Please refer to this <a href="http://getbootstrap.com/">documentation Boostrap</a></p>
+    
+      <hr>
+<br>
+      <h3 id="php"><strong>C) PHP files </strong> - <a href="#php">top</a></h3>
+      <p>Please takes as reference one of the PHP files and follows the comments on code.</p>
+      <p><strong>Main settings:</strong><br>
+1) $to =  change with your email address (better if contain your domain name, same for &lt;noreply@yourdomain.com&gt;)<br>
+2) Edit the text as you need (\n is equal to a br)<br>
+3) DelayRedirect on body tag = increse the value to get more delay on the redirect page<br>
+4) window.location = "your redirect page"<br>
+      </p>
+      <p>If you doesn't recieve the email please first check:<br>
+      1) Your spam folder<br>
+      2) If you hosting requires special settings (SMTP Authentication)<br>
+      3) If your sender email  has to be the same from your hosting provider <br>
+      </p>
+<p>Note that the contact form works a little bit different. Edit the file in the assets folder following the comments on code.</p>
+
+      <hr>
+<h3 id="javascript"><strong>D) JavaScript</strong> - <a href="#toc">top</a></h3>
+		
+	  <p>This theme use these Javascript (minified versions included). i've included all the common theme scripts in a single file for a fast edit and load (or if you prefer you can find the same js in separate files in js folder).</p>
+      <p><strong>common_scripts.js content:
+      </strong>      
+      <ul>
+      <li>Popper.js</li>
+      <li>Bootstrap.js</li>
+      <li>jQuery UI</li>
+      <li>jQuery.wizard</li>
+      <li>jQuery Validation</li>
+      <li>Float Labels</li>
+      </ul>
+      </p>
+<hr>
+		
+		<h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+	  <p>I've used the following images, icons or other files as listed. For the js listed below, you can find the more documentation on the relative sites.
+		
+	  <ul>
+        <li><a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a></li>       
+        <li><a href="https://modernizr.com/">Modernirz</a></li>
+        <li><a href="http://daneden.github.io/animate.css/">Animate.css</a></li>
+        <li><a href="http://jquery.com/">Jquery</a></li>
+        <li><a href="https://github.com/jquery/jquery-ui">Jquery ui</a></li>
+        <li><a href="http://owlgraphic.com/owlcarousel/">Owl carousel</a></li>
+        <li><a href="http://jqueryvalidation.org/">Jquery validation</a></li>
+        <li><a href="https://github.com/kflorence/jquery-wizard/">jQuery Wizard</a></li>
+        <li><a href="https://pryley.github.io/float-labels.js">FLoat Labels</a></li>
+        <li><a href="http://pixelcog.github.io/parallax.js/">Jquery Parallax</a></li>
+        <li><a href="https://github.com/hernansartorio/jquery-nice-select">Jquery Nice Select</a></li>
+	  </ul>
+    <p>Images are not included.</p>
+		<hr>
+        
+  	<h3 id="updates"><strong>F) UPDATES</strong> - <a href="#toc">top</a></h3>
+    <h4>&nbsp;</h4>
+<hr>
+<h3>Maybe you are interested in</h3>
+<p><a href="https://1.envato.market/0oe9P"><img src="assets/images/01-satisfyc-statisfaction-survey-form-wizard.jpg" width="590" height="300"></a></p>
+
+<p><a href="https://1.envato.market/JAL9r"><img src="assets/images/01-wilio-survey-quotation-review-form-wizard.jpg" width="590" height="300"></a></p>
+<p><a href="https://1.envato.market/e2ryr"><img src="assets/images/01-steps-form-wizard-with-branches.jpg" width="590" height="300"></a></p>
+
+<p><a href="https://1.envato.market/5GM2j"><img src="assets/images/01-Multipurpose-Working-Configurator-Wizard.jpg" width="590" height="300"></a></p>
+<p><a href="https://1.envato.market/05xEM"><img src="assets/images/01-quote-quotation-survey-form-wizard.jpg" width="590" height="300"></a></p>
+<p><a href="https://1.envato.market/JAL5R"><img src="assets/images/01-annova-survey-wizard.jpg" width="590" height="300"></a></p>
+<p><a href="https://codecanyon.net/item/reviewer-rating-and-review-wizard-html-template/9530385?ref=ansonika"><img src="assets/images/01-Reviewer-rating-wizard-template.jpg" width="590" height="300"></a></p>
+<p><a href="https://1.envato.market/ovXQb"><img src="assets/images/01_mastenia_responsive_forms_wizard.jpg" width="590" height="300"></a></p>
+<p><strong><br>
+    <img src="assets/images/avatar.jpg" width="80" height="80"><br>
+	  <br>
+    Once again, thank you so much for purchasing this theme. Please take a moment to rate it from your Downloads page.</strong><br> 
+		  
+<h3>Need support?</h3>
+For support contact me using the form on my profile page <span class="text_medium">with subject <strong>[ThemeForest Support]  Template name</strong></span>, or via the Support Tab on the item page. You will receive an answer within 24-48 hours (working days)  GMT  +1.
+<ul>
+<li>I only provide support for fixing bugs or small issues on my items.</li>
+<li>I don't provide free support for additional custom modifications to the items.</li>
+<li>Please provide your site link, screenshots and other information about your issue.</li>
+<li><a href="http://themeforest.net/page/item_support_policy" rel="nofollow"><strong>Envato support terms</strong></a></li>
+</ul>
+
+<h3>Need customization or availability for freelance projects?</h3>
+Just send an email via profile page form; please don't forget to specify:
+<ul>
+<li>if you are a company, agency or private user</li>
+<li>all the information about your projects, needs, site urls, project sheet, etc..</li>
+<li>from which country you are</li>
+<li>if you have a deadline</li>
+<li>if you have basic knowledge of  HTML , CSS, JS,  PHP</li>
+</ul>
+<p class="append-bottom alt large"><strong>Ansonika</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
