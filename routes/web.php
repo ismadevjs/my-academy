@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstimaraController;
+use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +16,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    
+    // admin
+    Route::prefix('/admin')->middleware('auth')->group(function() {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
+    });
+    // teachers
+    Route::prefix('/teachers')->middleware('auth')->group(function() {
+        Route::get('/', [TeacherController::class, 'dashboard'])->name('teachers');
+    });
 
-Route::get('/', function () {
-    return view('welcome');
+    // students
+    Route::prefix('/students')->middleware('auth')->group(function() {
+        Route::get('/', [StudentsController::class, 'dashboard'])->name('students');
+    });
+   
+
+
+ //estimara
+ Route::prefix('/estimara')->group(function() {
+    Route::get('/', [EstimaraController::class, 'dashboard'])->name('estimara');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
