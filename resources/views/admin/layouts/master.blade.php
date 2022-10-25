@@ -21,7 +21,7 @@
   </head>
   <body>
     <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-narrow sidebar-dark page-header-dark dark-mode">
-      @include('teachers.includes.sidebar')
+      @include('admin.includes.sidebar')
       <header id="page-header">
         <div class="content-header">
            {{-- hna tji kach afssa f header  --}}
@@ -54,17 +54,23 @@
         </div>
       </header>
       <main id="main-container">
+            @include('admin.includes.breadcumps')
         <div class="content">
             @yield('content')
         </div>
       </main>
-      @include('teachers.includes.footer')
+      @include('admin.includes.footer')
     </div>
     <script src="{{asset('assets/js/dashmix.app.min.js')}}"></script>
     <script src="{{asset('assets/js/lib/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/chart.js/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/pages/be_pages_dashboard_v1.min.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
+    <script>
+      Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: 'Your message!'});
+    </script>
+    @stack('scripts')
   </body>
 </html>

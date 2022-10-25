@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Route;
     // admin
     Route::prefix('/admin')->middleware('auth')->group(function() {
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
+        Route::get('/estimara', [AdminController::class, 'estimara'])->name('admin.estimara');
+       
+        Route::prefix('atelier')->group(function() {
+            Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');
+            Route::get('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
+        });
+
     });
     // teachers
     Route::prefix('/teachers')->middleware('auth')->group(function() {
@@ -32,12 +39,12 @@ use Illuminate\Support\Facades\Route;
     });
    
 
-
- //estimara
- Route::prefix('/estimara')->group(function() {
-    Route::get('/', [EstimaraController::class, 'dashboard'])->name('estimara');
-});
-
+    Route::prefix('/')->middleware('guest')->group(function() {
+    //estimara
+        Route::prefix('estimara')->group(function() {
+            Route::get('/', [EstimaraController::class, 'step1'])->name('estimara');
+        });
+    });
 
 
 Route::get('/dashboard', function () {

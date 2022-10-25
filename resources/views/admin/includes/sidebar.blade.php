@@ -1,77 +1,79 @@
-<div class="content-header">
-          <!-- Left Section -->
-          <div class="d-flex align-items-center">
-            <!-- Logo -->
-            <a class="fw-semibold text-dual tracking-wide" href="index.html">
-              Dash<span class="opacity-75">mix</span>
-              <span class="fw-normal">Analytics</span>
+<nav id="sidebar" aria-label="Main Navigation">
+  <!-- Side Header -->
+  <div class="bg-header-dark">
+    <div class="content-header bg-white-5">
+      <!-- Logo -->
+      <a class="fw-semibold text-white tracking-wide" href="index.html">
+        Admin Area
+      </a>
+      <!-- END Logo -->
+
+      <!-- Options -->
+      <div>
+        <!-- Close Sidebar, Visible only on mobile screens -->
+        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+        <button type="button" class="btn btn-sm btn-alt-secondary d-lg-none" data-toggle="layout" data-action="sidebar_close">
+          <i class="fa fa-times-circle"></i>
+        </button>
+        <!-- END Close Sidebar -->
+      </div>
+      <!-- END Options -->
+    </div>
+  </div>
+  <!-- END Side Header -->
+
+  <!-- Sidebar Scrolling -->
+  <div class="js-sidebar-scroll">
+    <!-- Side Actions -->
+    <div class="smini-hide">
+      <div class="content-side content-side-full bg-body-light">
+        <button type="button" class="btn w-100 btn-alt-primary">
+          <i class="fa fa-plus opacity-50 me-1"></i> New Project
+        </button>
+      </div>
+    </div>
+    <!-- END Side Actions -->
+
+    <!-- Side Navigation -->
+    <div class="content-side">
+      <ul class="nav-main">
+        <li class="nav-main-item">
+          <a class="nav-main-link active" href="db_dark.html">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-main-heading">Estimara management</li>
+        <li class="nav-main-item open">
+          <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+            <i class="nav-main-link-icon fa fa-border-all"></i>
+            <span class="nav-main-link-name">Estimara</span>
             </a>
-            <!-- END Logo -->
-
-            <!-- Open Search Section -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-alt-secondary ms-2" data-toggle="layout" data-action="header_search_on">
-              <i class="fa fa-search"></i>
-            </button>
-            <!-- END Open Search Section -->
-          </div>
-          <!-- END Left Section -->
-
-          <!-- Right Section -->
-          <div>
-            <!-- User Dropdown -->
-            <div class="dropdown d-inline-block">
-              <button type="button" class="btn btn-alt-secondary dropdown-toggle" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="d-none d-sm-inline me-1">John Smith</span>
-                <span class="badge rounded-pill bg-success">PRO</span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
-                <div class="rounded-top fw-semibold text-white text-center bg-image" style="background-image: url('assets/media/photos/photo16.jpg');">
-                  <div class="p-3">
-                    <img class="img-avatar img-avatar-thumb" src="assets/media/avatars/avatar10.jpg" alt="">
-                  </div>
-                  <div class="p-3 bg-primary-dark-op">
-                    <a class="text-white fw-semibold" href="be_pages_generic_profile.html">John Smith</a>
-                    <div class="text-white-75">j.smith@example.com</div>
-                  </div>
-                </div>
-                <div class="p-2">
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                    Profile
-                    <i class="fa fa-fw fa-user-circle opacity-50 ms-1"></i>
-                  </a>
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                    Websites
-                    <div>
-                      <span class="badge rounded-pill bg-primary">3</span>
-                      <i class="fa fa-fw fa-globe opacity-50 ms-1"></i>
-                    </div>
-                  </a>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                    Subscriptions
-                    <div>
-                      <span class="badge rounded-pill bg-primary">1</span>
-                      <i class="fa fa-fw fa-sync-alt opacity-50 ms-1"></i>
-                    </div>
-                  </a>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                    Billing
-                    <i class="fab fa-fw fa-paypal opacity-50 ms-1"></i>
-                  </a>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                    Preferences
-                    <i class="fa fa-fw fa-wrench opacity-50 ms-1"></i>
-                  </a>
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="op_auth_signin.html">
-                    Log Out
-                    <i class="fa fa-fw fa-sign-out-alt text-danger ms-1"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- END User Dropdown -->
-          </div>
-          <!-- END Right Section -->
-        </div>
+            <ul class="nav-main-submenu">
+            <li class="nav-main-item">
+              <a class="nav-main-link" href="{{route('admin.estimara')}}">
+               <span class="nav-main-link-name">list</span>
+              </a>
+            </li>
+            <li class="nav-main-item">
+              <a class="nav-main-link" href="{{route('admin.atelier')}}">
+                <span class="nav-main-link-name">Atelier</span>
+              </a>
+            </li>
+    
+          </ul>
+          </li>
+       
+        <li class="nav-main-heading">Dashboards</li>
+        <li class="nav-main-item">
+          <a class="nav-main-link" href="be_pages_dashboard_all.html">
+            <i class="nav-main-link-icon fa fa-arrow-left"></i>
+            <span class="nav-main-link-name">Go Back</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- END Side Navigation -->
+  </div>
+  <!-- END Sidebar Scrolling -->
+</nav>
