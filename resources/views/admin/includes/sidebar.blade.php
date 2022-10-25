@@ -60,7 +60,11 @@
                 <span class="nav-main-link-name">Atelier</span>
               </a>
             </li>
-    
+            {{-- <li class="nav-main-item">
+              <a class="nav-main-link" href="{{route('admin.atelier')}}">
+                <span class="nav-main-link-name">Atelier</span>
+              </a>
+            </li> --}}
           </ul>
           </li>
        

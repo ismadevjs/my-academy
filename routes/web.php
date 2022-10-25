@@ -21,13 +21,17 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('/admin')->middleware('auth')->group(function() {
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
         Route::get('/estimara', [AdminController::class, 'estimara'])->name('admin.estimara');
-       
+        Route::post('goback', [AdminController::class, 'goback'])->name('goback');
         Route::prefix('atelier')->group(function() {
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');
             Route::post('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
             Route::post('/delete', [AdminController::class, 'atelierDelete'])->name('admin.atelier.delete');
             Route::post('/delete-all', [AdminController::class, 'atelierDeleteAll'])->name('admin.atelier.delete.all');
             Route::post('/atelier-type-add', [AdminController::class, 'atelierTypeAdd'])->name('admin.atelier.type.add');
+            Route::post('/atelier-doross-add', [AdminController::class, 'atelierDorossAdd'])->name('admin.atelier.doross.add');
+            Route::get('/atelier-doross-list', [AdminController::class, 'atelierDorossList'])->name('admin.atelier.doross.list');
+            Route::post('/atelier-doross-list-delete', [AdminController::class, 'atelierDorossDelete'])->name('admin.atelier.doross.delete');
+            Route::post('/atelier-doross-list-update', [AdminController::class, 'atelierDorossUpdate'])->name('admin.atelier.doross.update');
         });
     });
     // teachers
@@ -52,5 +56,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';

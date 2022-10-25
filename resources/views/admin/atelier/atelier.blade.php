@@ -6,11 +6,88 @@
 
 @section('content')
 
+<div class="mb-4">
+  <div class="row">
+    <div class="col-md-6 col-xl-4">
+      <a data-bs-toggle="modal" data-bs-target="#add-type" class="block block-rounded block-transparent block-link-pop bg-gd-leaf h-100 mb-0" href="javascript:void(0)">
+        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+          <div>
+            <p class="fs-lg fw-semibold mb-0 text-white">
+              Ajouter un type
+            </p>
+            <p class="text-white-75 mb-0">
+              {{-- UI Design --}}
+            </p>
+          </div>
+          <div class="ms-3 item">
+            <i class="fa fa-2x fa-vector-square text-white-50"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+      <a  data-bs-toggle="modal" data-bs-target="#modal-block-slideleft" class="block block-rounded block-transparent block-link-pop bg-gd-sea h-100 mb-0" href="javascript:void(0)">
+        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+          <div>
+            <p class="fs-lg fw-semibold mb-0 text-white">
+              Ajouter une atteliers
+            </p>
+            <p class="text-white-75 mb-0">
+              {{-- UI Design --}}
+            </p>
+          </div>
+          <div class="ms-3 item">
+            <i class="fa fa-2x fa-vector-square text-white-50"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+   
+    <div class="col-md-6 col-xl-4">
+      <a data-bs-toggle="modal" data-bs-target="#add-doross" class="block block-rounded block-transparent block-link-pop bg-gd-fruit  h-100 mb-0" href="javascript:void(0)">
+        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+          <div>
+            <p class="fs-lg fw-semibold mb-0 text-white">
+              Ajotuer doross
+            </p>
+            <p class="text-white-75 mb-0">
+              {{-- UI Design --}}
+            </p>
+          </div>
+          <div class="ms-3 item">
+            <i class="fa fa-2x fa-vector-square text-white-50"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="mt-4 col-md-6 col-xl-4">
+      <a class="block block-rounded block-transparent block-link-pop bg-gd-dusk  h-100 mb-0" href="{{route('admin.atelier.doross.list')}}">
+        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+          <div>
+            <p class="fs-lg fw-semibold mb-0 text-white">
+              List doross
+            </p>
+            <p class="text-white-75 mb-0">
+              {{-- UI Design --}}
+            </p>
+          </div>
+          <div class="ms-3 item">
+            <i class="fa fa-2x fa-vector-square text-white-50"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
 <div class="block block-rounded">
 <div class="block-header block-header-default">
   <h3 class="block-title">List des ateliers</h3>
-  <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une atelier</button>
-  <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button>
+  {{-- <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une atelier</button> --}}
+  {{-- <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button> --}}
   <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">Delete all</button>
   <div class="block-options">
     <div class="block-options-item">
@@ -50,6 +127,47 @@
 <!-- END Slide Left Block Modal -->
 
 
+<!-- Slide Left Block Modal -->
+<div class="modal fade" id="add-doross" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideleft" role="document">
+      <div class="modal-content">
+        <div class="block block-rounded block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Ajouter doross</h3>
+            <div class="block-options">
+              <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                <i class="fa fa-fw fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <form action="{{route('admin.atelier.doross.add')}}" method="POST" >
+              <div class="block-content">
+                @csrf
+                <div class="mb-4">
+                    <label for="">Name : </label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="mb-4">
+                  <label for="">Type : </label>
+                  <select type="text" name="type" class="form-select" >
+                    <option value="-">-</option>
+                   @foreach ($ateliertypes as $type)
+                    <option value="{{$type->id}}">{{$type->name}}</option>  
+                   @endforeach
+                  </select>
+              </div>
+          
+             </div>
+          <div class="block-content block-content-full text-end bg-body">
+            <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-sm btn-success" >save</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END Slide Left Block Modal -->
 <!-- Slide Left Block Modal -->
 <div class="modal fade" id="modal-block-slideleft" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideleft" role="document">
