@@ -232,31 +232,9 @@
                    
               @endforeach
 
-              @else 
-
-
-              @foreach ($ateliertypes as $ty)
-                @if ($type == $ty->id)
-                  <a class="block block-rounded block-link-rotate bg-black-10 mb-2" href="javascript:void(0)">
-                    <div class="block-content block-content-sm block-content-full d-flex align-items-center justify-content-between">
-                      <div class="me-3">
-                        <p class="text-white fs-3 fw-light mb-0">
-                          
-                        </p>
-                        <p class="text-white-75 mb-0">
-                          {{$ty->name}}
-                        </p>
-                      </div>
-                      <div class="item">
-                        <i class="fa fa-2x fa-film text-primary-lighter"></i>
-                      </div>
-                    </div>
-                  </a>
-                @endif
-            @endforeach
-
-
-              @endif
+            @endif
+               
+           
               
               
             </div>
