@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atelier;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -21,16 +22,23 @@ class AdminController extends Controller
             'icon' => 'required'
         ]);
 
-        if($request->file('icon')){
-            $file= $request->file('icon');
-            $filename= $file->getClientOriginalName();
-            $file-> move(public_path('public/Image'), $filename);
-            $data['image']= $filename;
-            return $data;
+        if($request->file('icon')->extension() !== 'png') {
+            if($request->file('icon')->extension() !== 'jpg') {
+                return back()->withErrors('Please insert valid image format');
+            }
         }
 
-        
+        $atelier = Atelier::where('name', $request->name)->first();
 
+        if ($atelier) return back()->withErrors('Atelier already in our records');
+
+        Atelier::create([
+            'name' => $request->name,
+            'icon' => img($request, 'icon')
+        ]);
+
+
+        return back()->withErrors('Data inserted');
 
     }
 }

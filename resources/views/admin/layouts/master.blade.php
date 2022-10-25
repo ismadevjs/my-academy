@@ -70,7 +70,7 @@
     <script>
       @if(count($errors) > 0)
           @foreach($errors->all() as $error)
-          Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: '{{$errors}}'});
+             Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: '{{$error}}'});
           @endforeach
       @endif
   </script>
