@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ateliers', function (Blueprint $table) {
+        Schema::create('ateliertypes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
-            $table->text('icon')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('ateliers');
+        Schema::drop('atelierTypes');
     }
 };

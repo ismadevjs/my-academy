@@ -1,17 +1,55 @@
 @extends('admin.layouts.master')
 
+@push('styles')
+<link rel="stylesheet" href="{{asset('assets/js/plugins/select2/css/select2.min.css')}}">
+@endpush
 
 @section('content')
 
 <div class="block block-rounded">
 <div class="block-header block-header-default">
   <h3 class="block-title">List des ateliers</h3>
-  <button type="button" class="btn btn-success push" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une atelier</button>
+  <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une atelier</button>
+  <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button>
+  <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">Delete all</button>
   <div class="block-options">
     <div class="block-options-item">
     </div>
   </div>
 </div>
+<!-- Slide Left Block Modal -->
+<div class="modal fade" id="add-type" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideleft" role="document">
+    <div class="modal-content">
+      <div class="block block-rounded block-themed block-transparent mb-0">
+        <div class="block-header bg-primary-dark">
+          <h3 class="block-title">Ajouter un type</h3>
+          <div class="block-options">
+            <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+              <i class="fa fa-fw fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <form action="{{route('admin.atelier.type.add')}}" method="POST" enctype="multipart/form-data">
+            <div class="block-content">
+              @csrf
+              <div class="mb-4">
+                  <label for="">Name : </label>
+                  <input type="text" name="name" class="form-control">
+              </div>
+           </div>
+        <div class="block-content block-content-full text-end bg-body">
+          <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-sm btn-success" >save</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END Slide Left Block Modal -->
+
+
 <!-- Slide Left Block Modal -->
 <div class="modal fade" id="modal-block-slideleft" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideleft" role="document">
@@ -33,6 +71,19 @@
                     <input type="text" name="name" class="form-control">
                 </div>
                 <div class="mb-4">
+                  <label for="">Type : </label>
+
+                
+
+
+                  <select type="text" name="type[]" class="form-select" multiple>
+                   @foreach ($ateliertypes as $type)
+                    <option value="{{$type->id}}">{{$type->name}}</option>  
+                   @endforeach
+                  </select>
+              </div>
+
+                <div class="mb-4">
                     <label for="">icon : </label>
                     <input type="file" name="icon" class="form-control">
                 </div>
@@ -48,6 +99,42 @@
     </div>
   </div>
   <!-- END Slide Left Block Modal -->
+
+  <!-- Slide Left Block Modal -->
+<div class="modal fade" id="delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideleft" role="document">
+    <div class="modal-content">
+      <div class="block block-rounded block-themed block-transparent mb-0">
+       
+      
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Etes vous sure?</h3>
+            <div class="block-options">
+              <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                <i class="fa fa-fw fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="block-content text-center ">
+            <h4 class=" text-bold ">All Ateliers</span> Will be deleted</h4>
+          </div>
+          <form action="{{route('admin.atelier.delete.all')}}" method="POST">
+            @csrf
+          <div class="block-content block-content-full text-end bg-body">
+            <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
+          </div>
+        </form>
+    
+     
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END Slide Left Block Modal -->
+
+
 <div class="block-content">
   <!-- If you put a checkbox in thead section, it will automatically toggle all tbody section checkboxes -->
   <div class="table-responsive">
@@ -92,12 +179,101 @@
             <em class="fs-sm text-muted">{{ $atelier->created_at->diffForHumans() }}</em>
           </td>
           <td class="d-none d-sm-table-cell">
+              <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#v-{{$atelier->id}}">V</button>
               <button class="btn btn-success">E</button>
-              <button class="btn btn-danger js-swal-confirm" data-bs-toggle="modal" data-bs-target="#d-{{$atelier->id}}">D</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#d-{{$atelier->id}}">D</button>
           </td>
         </tr>
   
         <!-- Slide Left Block Modal chack suppressions -->
+  <div class="modal fade" id="v-{{$atelier->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideleft" role="document">
+      <div class="modal-content">
+        <div class="block block-rounded block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Les types de cette atelier : {{$atelier->name}}</h3>
+            <div class="block-options">
+              <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                <i class="fa fa-fw fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="block-content text-center ">
+
+            <div class="block-content">
+              <p class="text-white text-uppercase fs-sm fw-bold text-center mt-2 mb-4">
+                Atelier : {{$atelier->name}}
+              </p>
+
+              
+
+              @if (gettype(json_decode($atelier->type)) == 'array')
+                  @foreach (json_decode($atelier->type) as $type)
+                    @foreach ($ateliertypes as $ty)
+                      @if ($type == $ty->id)
+                      <a class="block block-rounded block-link-rotate bg-black-10 mb-2" href="javascript:void(0)">
+                        <div class="block-content block-content-sm block-content-full d-flex align-items-center justify-content-between">
+                          <div class="me-3">
+                            <p class="text-white fs-3 fw-light mb-0">
+                              
+                            </p>
+                            <p class="text-white-75 mb-0">
+                              {{$ty->name}}
+                            </p>
+                          </div>
+                          <div class="item">
+                            <i class="fa fa-2x fa-film text-primary-lighter"></i>
+                          </div>
+                        </div>
+                      </a>
+                      @endif
+                    @endforeach
+                 
+                   
+              @endforeach
+
+              @else 
+
+
+              @foreach ($ateliertypes as $ty)
+                @if ($type == $ty->id)
+                  <a class="block block-rounded block-link-rotate bg-black-10 mb-2" href="javascript:void(0)">
+                    <div class="block-content block-content-sm block-content-full d-flex align-items-center justify-content-between">
+                      <div class="me-3">
+                        <p class="text-white fs-3 fw-light mb-0">
+                          
+                        </p>
+                        <p class="text-white-75 mb-0">
+                          {{$ty->name}}
+                        </p>
+                      </div>
+                      <div class="item">
+                        <i class="fa fa-2x fa-film text-primary-lighter"></i>
+                      </div>
+                    </div>
+                  </a>
+                @endif
+            @endforeach
+
+
+              @endif
+              
+              
+            </div>
+
+
+           
+              
+             
+                </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Slide Left Block Modal chack suppressions -->
   <div class="modal fade" id="d-{{$atelier->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideleft" role="document">
       <div class="modal-content">
@@ -141,6 +317,7 @@
 @endsection
 
 @push('scripts')
+    <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
     <!-- Page JS Helpers (Table Tools helpers) -->
-    <script>Dashmix.helpersOnLoad(['dm-table-tools-checkable', 'dm-table-tools-sections']);</script>
+    <script>Dashmix.helpersOnLoad(['dm-table-tools-checkable', 'dm-table-tools-sections', 'jq-select2',]);</script>
 @endpush

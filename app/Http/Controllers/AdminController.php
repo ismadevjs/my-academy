@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atelier;
+use App\Models\AtelierType;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,12 +16,14 @@ class AdminController extends Controller
     }
     public function atelier(){
         $ateliers = Atelier::latest()->paginate(25);
-        return view('admin.atelier.atelier',compact('ateliers'));
+        $ateliertypes = AtelierType::all();
+        return view('admin.atelier.atelier',compact('ateliers', 'ateliertypes'));
     }
     public function atelierAdd(Request $request){
         $request->validate([
             'name' => 'required',
-            'icon' => 'required'
+            'icon' => 'required',
+            'type' => 'required'
         ]);
 
         if($request->file('icon')->extension() !== 'png') {
@@ -29,13 +32,16 @@ class AdminController extends Controller
             }
         }
 
+        if($request->type == '-') return back()->withErrors('Please choose type');
+
         $atelier = Atelier::where('name', $request->name)->first();
 
         if ($atelier) return back()->withErrors('Atelier already in our records');
 
         Atelier::create([
             'name' => $request->name,
-            'icon' => img($request, 'icon')
+            'icon' => img($request, 'icon'),
+            'type' => json_encode($request->type)
         ]);
 
 
@@ -51,4 +57,29 @@ class AdminController extends Controller
         $atelier->delete();
         return back()->withErrors($atelier->name . ' deleted');
     }
+
+    public function atelierDeleteAll(Request $request) {
+ 
+        Atelier::truncate();
+        return back()->withErrors('ALL deleted');
+    }
+
+    public function atelierTypeAdd(Request $request) {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $atelierType = AtelierType::where('name', $request->name)->first();
+
+        if ($atelierType) return back()->withErrors('Atelier Type already in our records');
+
+        AtelierType::create([
+            'name' => $request->name
+        ]);
+
+
+        return back()->withErrors('Data inserted');
+    }
+
+
 }

@@ -26,8 +26,9 @@ use Illuminate\Support\Facades\Route;
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');
             Route::post('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
             Route::post('/delete', [AdminController::class, 'atelierDelete'])->name('admin.atelier.delete');
+            Route::post('/delete-all', [AdminController::class, 'atelierDeleteAll'])->name('admin.atelier.delete.all');
+            Route::post('/atelier-type-add', [AdminController::class, 'atelierTypeAdd'])->name('admin.atelier.type.add');
         });
-
     });
     // teachers
     Route::prefix('/teachers')->middleware('auth')->group(function() {

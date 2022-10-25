@@ -10,6 +10,13 @@ class Atelier extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'icon'
+        'icon',
+        'type'
     ];
+
+
+
+    // public function types() {
+    //     return $this->hasMany(AtelierType::class, 'id', 'type');
+    // }
 }
