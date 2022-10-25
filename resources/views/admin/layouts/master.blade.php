@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/media/favicons/apple-touch-icon-180x180.png')}}">
     <link rel="stylesheet" id="css-main" href="{{asset('assets/css/dashmix.min.css')}}">
     <link rel="stylesheet" id="css-theme" href="{{asset('assets/css/themes/xpro.min.css')}}">
+    @stack('styles')
   </head>
   <body>
     <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-narrow sidebar-dark page-header-dark dark-mode">
@@ -66,14 +67,14 @@
     <script src="{{asset('assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/chart.js/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/pages/be_pages_dashboard_v1.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script>
       @if(count($errors) > 0)
           @foreach($errors->all() as $error)
              Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: '{{$error}}'});
           @endforeach
       @endif
-  </script>
+   </script>
     <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
     @stack('scripts')
   </body>

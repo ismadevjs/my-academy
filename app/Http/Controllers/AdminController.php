@@ -14,7 +14,8 @@ class AdminController extends Controller
         return view('admin.estimara.index');
     }
     public function atelier(){
-        return view('admin.atelier.atelier');
+        $ateliers = Atelier::latest()->paginate(25);
+        return view('admin.atelier.atelier',compact('ateliers'));
     }
     public function atelierAdd(Request $request){
         $request->validate([
@@ -40,5 +41,14 @@ class AdminController extends Controller
 
         return back()->withErrors('Data inserted');
 
+    }
+
+    public function atelierDelete(Request $request) {
+
+        $atelier = Atelier::find($request->id);
+        if(!$atelier) return back()->withErrors('Somthing went wrong');
+        // lazam nzid naaraf beli atelier maandhach childs li houma course wela niv
+        $atelier->delete();
+        return back()->withErrors($atelier->name . ' deleted');
     }
 }
