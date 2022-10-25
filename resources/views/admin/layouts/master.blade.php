@@ -67,10 +67,14 @@
     <script src="{{asset('assets/js/plugins/chart.js/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/pages/be_pages_dashboard_v1.min.js')}}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-    <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
     <script>
-      Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: 'Your message!'});
-    </script>
+      @if(count($errors) > 0)
+          @foreach($errors->all() as $error)
+          Dashmix.helpers('jq-notify', {from: 'bottom', align: 'left', message: '{{$errors}}'});
+          @endforeach
+      @endif
+  </script>
+    <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
     @stack('scripts')
   </body>
 </html>

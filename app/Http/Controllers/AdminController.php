@@ -16,6 +16,21 @@ class AdminController extends Controller
         return view('admin.atelier.atelier');
     }
     public function atelierAdd(Request $request){
-        return $request;
+        $request->validate([
+            'name' => 'required',
+            'icon' => 'required'
+        ]);
+
+        if($request->file('icon')){
+            $file= $request->file('icon');
+            $filename= $file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['image']= $filename;
+            return $data;
+        }
+
+        
+
+
     }
 }

@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
        
         Route::prefix('atelier')->group(function() {
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');
-            Route::get('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
+            Route::post('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
         });
 
     });
