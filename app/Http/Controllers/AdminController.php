@@ -6,6 +6,7 @@ use App\Models\Atelier;
 use App\Models\AtelierDoross;
 use App\Models\AtelierType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class AdminController extends Controller
 {
@@ -149,5 +150,42 @@ class AdminController extends Controller
         return back()->withErrors('Data inserted');
     }
 
+    public function atelierUpdate(Request $request) {
+        $request->validate([
+            'name' => 'required',
+        ]);
 
+        $data['name'] = $request->name;
+     
+
+
+        if($request->type != null) {
+            $data['type'] = $request->type;
+        }
+
+        if($request->icon != null) {
+            if($request->file('icon')->extension() !== 'png') {
+                if($request->file('icon')->extension() !== 'jpg') {
+                    return back()->withErrors('Please insert valid image format');
+                }
+            }
+
+            $data['icon'] = img($request, 'icon');
+        }
+
+
+    
+
+            $atelier = Atelier::find($request->id);
+
+             
+
+            // check for image and type if not empty
+
+            $atelier->update($data);
+
+
+        return back()->withErrors('Data updated');
+
+    }
 }

@@ -8,7 +8,7 @@
 
 <div class="mb-4">
   <div class="row">
-    <div class="col-md-6 col-xl-4">
+    <div class=" mb-4 col-md-6 col-xl-4">
       <a data-bs-toggle="modal" data-bs-target="#add-type" class="block block-rounded block-transparent block-link-pop bg-gd-leaf h-100 mb-0" href="javascript:void(0)">
         <div class="block-content block-content-full d-flex align-items-center justify-content-between">
           <div>
@@ -26,7 +26,7 @@
       </a>
     </div>
 
-    <div class="col-md-6 col-xl-4">
+    <div class=" mb-4 col-md-6 col-xl-4">
       <a  data-bs-toggle="modal" data-bs-target="#modal-block-slideleft" class="block block-rounded block-transparent block-link-pop bg-gd-sea h-100 mb-0" href="javascript:void(0)">
         <div class="block-content block-content-full d-flex align-items-center justify-content-between">
           <div>
@@ -44,7 +44,7 @@
       </a>
     </div>
    
-    <div class="col-md-6 col-xl-4">
+    <div class="mb-4 col-md-6 col-xl-4">
       <a data-bs-toggle="modal" data-bs-target="#add-doross" class="block block-rounded block-transparent block-link-pop bg-gd-fruit  h-100 mb-0" href="javascript:void(0)">
         <div class="block-content block-content-full d-flex align-items-center justify-content-between">
           <div>
@@ -62,7 +62,7 @@
       </a>
     </div>
 
-    <div class="mt-4 col-md-6 col-xl-4">
+    <div class="mb-4 col-md-6 col-xl-4">
       <a class="block block-rounded block-transparent block-link-pop bg-gd-dusk  h-100 mb-0" href="{{route('admin.atelier.doross.list')}}">
         <div class="block-content block-content-full d-flex align-items-center justify-content-between">
           <div>
@@ -335,11 +335,79 @@
           </td>
           <td class="d-none d-sm-table-cell">
               <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#v-{{$atelier->id}}">V</button>
-              <button class="btn btn-success">E</button>
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#e-{{$atelier->id}}">E</button>
               <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#d-{{$atelier->id}}">D</button>
           </td>
         </tr>
   
+
+         <!-- Slide Left Block Modal chack suppressions -->
+         <div class="modal fade" id="e-{{$atelier->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-slideleft" role="document">
+          <div class="modal-content">
+              <div class="block block-rounded block-themed block-transparent mb-0">
+              <div class="block-header bg-primary-dark">
+                  <h3 class="block-title">Etes vous sure?</h3>
+                  <div class="block-options">
+                  <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                      <i class="fa fa-fw fa-times"></i>
+                  </button>
+                  </div>
+              </div>
+              <div class="block-content text-center ">
+                  <h4 class=" text-bold ">Atelier : <span class="badge bg-danger">{{$atelier->name}}</span> Will be edited</h4>
+              </div>
+              <form action="{{route('admin.atelier.update')}}" method="POST" enctype="multipart/form-data">
+                  <div class="block-content">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="">Name : </label>
+                        <input type="hidden" name="id" value="{{$atelier->id}}" class="form-control">
+                        <input type="text" name="name" value="{{$atelier->name}}" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                      <label for="">Type : </label>
+    
+                      <select type="text" name="type[]" class="form-select" multiple>
+    
+                     
+                        @foreach ($ateliertypes as $type)
+                           <option value="{{$type->id}}">{{$type->name}}</option>
+                           @foreach ($type->parents as  $parent)
+                                @if ($parent->id ==  $type->parent)
+                                
+                                  <option value="{{$parent->id}}"> - {{$parent->name}}</option>
+    
+                                @endif
+                                @endforeach
+    
+                        @endforeach
+    
+    
+                      
+    
+    
+                      </select>
+                  </div>
+    
+                    <div class="mb-4">
+                        <label for="">icon : </label>
+                        <input type="file" name="icon" class="form-control">
+                    </div>
+              
+                 </div>
+              <div class="block-content block-content-full text-end bg-body">
+                <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-sm btn-success" >save</button>
+              </div>
+            </form>
+              </div>
+          </div>
+          </div>
+      </div>
+
+
+
         <!-- Slide Left Block Modal chack suppressions -->
   <div class="modal fade" id="v-{{$atelier->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideleft" role="document">
