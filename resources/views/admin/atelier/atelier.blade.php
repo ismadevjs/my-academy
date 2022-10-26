@@ -201,17 +201,26 @@
                   <label for="">Type : </label>
 
                   <select type="text" name="type[]" class="form-select" multiple>
-                   
+                   $nulledParents = [];
                     @foreach ($ateliertypes as $type)
-                        @foreach ($type->parents as  $parent)
-                          <option value="{{$parent->id}}">{{$parent->name}}</option>
-                          @foreach ($type->childs as  $child)
-                          <option value="{{$child->id}}">- {{$child->name}}</option>
+                       @foreach ($type->parents as  $parent)
+                         <option value="{{$parent->id}}">{{$parent->name}}</option>
+                        @foreach ($ateliertypes as $child)
+                            @if ($parent->id ==  $child->parent)
+                             @php array_push($nulledParents, $child->id) @endphp
+                              <option value="{{$child->id}}"> - {{$child->name}}</option>
+                            @endif
                         @endforeach
+                      @endforeach
+                    @endforeach
 
 
-
-                       @endforeach
+                    @foreach ($ateliertypes as $type)
+                       
+                      @if ($type->parent == NULL)
+                        {{-- {{dd($nulledParents)}} --}}
+                        <option value="{{$type->id}}"> {{$type->name}}</option>
+                      @endif
                        
                     @endforeach
 
@@ -234,11 +243,7 @@
     </div>
   </div>
   <!-- END Slide Left Block Modal -->
-  @foreach ($ateliertypes as $type)
-      @foreach ($type->childs as  $parent)
-          {{print_r($parent)}}
-      @endforeach
-  @endforeach
+
   <!-- Slide Left Block Modal -->
 <div class="modal fade" id="delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
   <div class="modal-dialog modal-dialog-slideleft" role="document">
