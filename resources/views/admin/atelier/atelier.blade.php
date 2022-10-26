@@ -112,9 +112,16 @@
               @csrf
 
               <select type="text" name="parent" class="form-select">
-                <option value="-">-</option>
                 @foreach ($ateliertypes as $type)
-                 <option value="{{$type->id}}">{{$type->name}}</option>  
+                   <option value="{{$type->id}}">{{$type->name}}</option>
+                   @foreach ($type->parents as  $parent)
+                        @if ($parent->id ==  $type->parent)
+                        
+                          <option value="{{$parent->id}}"> - {{$parent->name}}</option>
+
+                        @endif
+                        @endforeach
+
                 @endforeach
                </select>
 
@@ -159,10 +166,18 @@
                 <div class="mb-4">
                   <label for="">Type : </label>
                   <select type="text" name="type" class="form-select" >
-                    <option value="-">-</option>
-                   @foreach ($ateliertypes as $type)
-                    <option value="{{$type->id}}">{{$type->name}}</option>  
-                   @endforeach
+                    
+                    @foreach ($ateliertypes as $type)
+                       <option value="{{$type->id}}">{{$type->name}}</option>
+                       @foreach ($type->parents as  $parent)
+                            @if ($parent->id ==  $type->parent)
+                            
+                              <option value="{{$parent->id}}"> - {{$parent->name}}</option>
+
+                            @endif
+                            @endforeach
+
+                    @endforeach
                   </select>
               </div>
           
@@ -201,28 +216,23 @@
                   <label for="">Type : </label>
 
                   <select type="text" name="type[]" class="form-select" multiple>
-                   $nulledParents = [];
+
+                 
                     @foreach ($ateliertypes as $type)
+                       <option value="{{$type->id}}">{{$type->name}}</option>
                        @foreach ($type->parents as  $parent)
-                         <option value="{{$parent->id}}">{{$parent->name}}</option>
-                        @foreach ($ateliertypes as $child)
-                            @if ($parent->id ==  $child->parent)
-                             @php array_push($nulledParents, $child->id) @endphp
-                              <option value="{{$child->id}}"> - {{$child->name}}</option>
+                            @if ($parent->id ==  $type->parent)
+                            
+                              <option value="{{$parent->id}}"> - {{$parent->name}}</option>
+
                             @endif
-                        @endforeach
-                      @endforeach
+                            @endforeach
+
                     @endforeach
 
 
-                    @foreach ($ateliertypes as $type)
-                       
-                      @if ($type->parent == NULL)
-                        {{-- {{dd($nulledParents)}} --}}
-                        <option value="{{$type->id}}"> {{$type->name}}</option>
-                      @endif
-                       
-                    @endforeach
+                  
+
 
                   </select>
               </div>
@@ -244,6 +254,7 @@
   </div>
   <!-- END Slide Left Block Modal -->
 
+ 
   <!-- Slide Left Block Modal -->
 <div class="modal fade" id="delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
   <div class="modal-dialog modal-dialog-slideleft" role="document">

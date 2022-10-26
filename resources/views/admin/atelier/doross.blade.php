@@ -89,9 +89,17 @@
                         <label for="">Type : </label>
                         <select type="text" name="type" class="form-select" >
                           <option value="-">-</option>
-                         @foreach ($ateliertypes as $type)
-                          <option value="{{$type->id}}">{{$type->name}}</option>  
-                         @endforeach
+                          @foreach ($ateliertypes as $type)
+                          <option value="{{$type->id}}">{{$type->name}}</option>
+                          @foreach ($type->parents as  $parent)
+                               @if ($parent->id ==  $type->parent)
+                               
+                                 <option value="{{$parent->id}}"> - {{$parent->name}}</option>
+   
+                               @endif
+                               @endforeach
+   
+                       @endforeach
                         </select>
                     </div>
                 

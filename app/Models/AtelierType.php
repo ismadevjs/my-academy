@@ -14,4 +14,5 @@ class AtelierType extends Model
     public function parents() {
         return $this->hasMany(AtelierType::class, 'id', 'parent');
     }
+
 }
