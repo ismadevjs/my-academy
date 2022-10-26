@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('ateliertypes', function (Blueprint $table) {
             $table->id();
+            $table->string('parent')->nullable();
             $table->string('name');
             $table->timestamps();
         });

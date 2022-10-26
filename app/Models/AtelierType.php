@@ -9,5 +9,12 @@ class AtelierType extends Model
 {
     use HasFactory;
     protected $table = 'ateliertypes';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent'];
+
+    public function parents() {
+        return $this->hasMany(AtelierType::class, 'id', 'parent');
+    }
+    public function childs() {
+        return $this->belongsTo(AtelierType::class, 'id', 'parent');
+    }
 }

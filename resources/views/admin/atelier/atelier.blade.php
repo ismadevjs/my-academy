@@ -110,6 +110,15 @@
         <form action="{{route('admin.atelier.type.add')}}" method="POST" enctype="multipart/form-data">
             <div class="block-content">
               @csrf
+
+              <select type="text" name="parent" class="form-select">
+                <option value="-">-</option>
+                @foreach ($ateliertypes as $type)
+                 <option value="{{$type->id}}">{{$type->name}}</option>  
+                @endforeach
+               </select>
+
+
               <div class="mb-4">
                   <label for="">Name : </label>
                   <input type="text" name="name" class="form-control">
@@ -191,13 +200,21 @@
                 <div class="mb-4">
                   <label for="">Type : </label>
 
-                
-
-
                   <select type="text" name="type[]" class="form-select" multiple>
-                   @foreach ($ateliertypes as $type)
-                    <option value="{{$type->id}}">{{$type->name}}</option>  
-                   @endforeach
+                   
+                    @foreach ($ateliertypes as $type)
+                        @foreach ($type->parents as  $parent)
+                          <option value="{{$parent->id}}">{{$parent->name}}</option>
+                          @foreach ($type->childs as  $child)
+                          <option value="{{$child->id}}">- {{$child->name}}</option>
+                        @endforeach
+
+
+
+                       @endforeach
+                       
+                    @endforeach
+
                   </select>
               </div>
 
@@ -217,7 +234,11 @@
     </div>
   </div>
   <!-- END Slide Left Block Modal -->
-
+  @foreach ($ateliertypes as $type)
+      @foreach ($type->childs as  $parent)
+          {{print_r($parent)}}
+      @endforeach
+  @endforeach
   <!-- Slide Left Block Modal -->
 <div class="modal fade" id="delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">
   <div class="modal-dialog modal-dialog-slideleft" role="document">

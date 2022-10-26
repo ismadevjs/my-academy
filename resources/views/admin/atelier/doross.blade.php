@@ -82,6 +82,7 @@
                       @csrf
                       <div class="mb-4">
                           <label for="">Name : </label>
+                          <input type="hidden" name="id" value="{{ $drs->id }}" class="form-control">
                           <input type="text" name="name" value="{{ $drs->name }}" class="form-control">
                       </div>
                       <div class="mb-4">

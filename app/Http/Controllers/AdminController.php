@@ -73,9 +73,11 @@ class AdminController extends Controller
         $atelierType = AtelierType::where('name', $request->name)->first();
 
         if ($atelierType) return back()->withErrors('Atelier Type already in our records');
+    
 
         AtelierType::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'parent' => $request->parent
         ]);
 
 
@@ -130,8 +132,9 @@ class AdminController extends Controller
             'type' => 'required'
         ]);
 
-        $atelierType = AtelierDoross::where('name', $request->name)->where('type', $request->type)->first();
-        dd($request);
+        $atelierType = AtelierDoross::find($request->id);
+
+        
         if($request->type == '-') {
             $atelierType->update([
                 'name' => $request->name,
