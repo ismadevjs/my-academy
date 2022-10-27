@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="block-content text-center ">
-                            <h4 class=" text-bold ">سيتم جدف الكل</h4>
+                            <h4 class=" text-bold ">سيتم حدف الكل</h4>
                         </div>
                         <form action="{{ route('admin.types.delete.all') }}" method="POST">
                             @csrf

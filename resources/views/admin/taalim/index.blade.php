@@ -51,8 +51,7 @@
             <h3 class="block-title">القائمة</h3>
             {{-- <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une atelier</button> --}}
             {{-- <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button> --}}
-            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">Delete
-                all</button>
+            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">حدف الكل</button>
             <div class="block-options">
                 <div class="block-options-item">
                 </div>
@@ -147,10 +146,10 @@
                                     <label class="form-check-label" for="check-all"></label>
                                 </div>
                             </th>
-                            <th lass="d-none d-sm-table-cell">id</th>
-                            <th lass="d-none d-sm-table-cell">Name</th>
-                            <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%;">Actions</th>
+                            <th lass="d-none d-sm-table-cell">الرقم</th>
+                            <th lass="d-none d-sm-table-cell">الاسم</th>
+                            <th class="d-none d-sm-table-cell" style="width: 20%;">التاريخ</th>
+                            <th class="d-none d-sm-table-cell" style="width: 15%;">الاعدادات</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -177,9 +176,9 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <button class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#e-{{ $taalim->id }}">E</button>
+                                        data-bs-target="#e-{{ $taalim->id }}">تعديل</button>
                                     <button class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#d-{{ $taalim->id }}">D</button>
+                                        data-bs-target="#d-{{ $taalim->id }}">حدف</button>
                                 </td>
                             </tr>
 
@@ -191,7 +190,7 @@
                                     <div class="modal-content">
                                         <div class="block block-rounded block-themed block-transparent mb-0">
                                             <div class="block-header bg-primary-dark">
-                                                <h3 class="block-title">Etes vous sure?</h3>
+                                                <h3 class="block-title">هل انت متأكد؟</h3>
                                                 <div class="block-options">
                                                     <button type="button" class="btn-block-option"
                                                         data-bs-dismiss="modal" aria-label="Close">
@@ -209,7 +208,7 @@
                                                 <div class="block-content">
                                                     @csrf
                                                     <div class="mb-4">
-                                                        <label for="">Name : </label>
+                                                        <label for="">الاسم </label>
                                                         <input type="hidden" name="id" value="{{ $taalim->id }}"
                                                             class="form-control">
                                                         <input type="text" name="name" value="{{ $taalim->name }}"
@@ -240,7 +239,7 @@
                                     <div class="modal-content">
                                         <div class="block block-rounded block-themed block-transparent mb-0">
                                             <div class="block-header bg-primary-dark">
-                                                <h3 class="block-title">Etes vous sure?</h3>
+                                                <h3 class="block-title">هل انت متأكد؟</h3>
                                                 <div class="block-options">
                                                     <button type="button" class="btn-block-option"
                                                         data-bs-dismiss="modal" aria-label="Close">
@@ -249,8 +248,8 @@
                                                 </div>
                                             </div>
                                             <div class="block-content text-center ">
-                                                <h4 class=" text-bold ">Taalim : <span
-                                                        class="badge bg-danger">{{ $taalim->name }}</span> Will be deleted
+                                                <h4 class=" text-bold ">التعليم  <span
+                                                        class="badge bg-danger">{{ $taalim->name }}</span> سيتم حدف
                                                 </h4>
                                             </div>
                                             <form action="{{ route('admin.taalim.delete') }}" method="POST">
@@ -261,8 +260,8 @@
                                                 </div>
                                                 <div class="block-content block-content-full text-end bg-body">
                                                     <button type="button" class="btn btn-sm btn-alt-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                        data-bs-dismiss="modal">غلق</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">حدف</button>
                                                 </div>
                                             </form>
                                         </div>
