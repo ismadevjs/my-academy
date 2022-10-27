@@ -39,7 +39,8 @@ class SanawatsController extends Controller
 
         
         $data['name'] = $request->name;
-
+        if($request->taalim_id != "-")  $data['taalim_id'] = $request->taalim_id;
+        
         $sanawat = Sanawat::find($request->id);
         
         $sanawat->update($data);

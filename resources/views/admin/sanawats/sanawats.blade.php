@@ -207,6 +207,22 @@
                 <form action="{{route('admin.sanawats.update')}}" method="POST" enctype="multipart/form-data">
                     <div class="block-content">
                       @csrf
+
+
+                      <div class="mb-4">
+                        <span>taalim : {{$sanawat->taalim->name}} </span>
+                    </div>
+
+                      <div class="mb-4">
+                        <label for="">taalim : </label>
+                        <select name="taalim_id" class="form-select" id="">
+                          <option value="-">-</option>
+                          @foreach ($taalims as $taalim)
+                              <option value="{{$taalim->id}}">{{$taalim->name}}</option>
+                          @endforeach
+                        </select>
+                    </div>
+
                       <div class="mb-4">
                           <label for="">Name : </label>
                           <input type="hidden" name="id" value="{{$sanawat->id}}" class="form-control">
