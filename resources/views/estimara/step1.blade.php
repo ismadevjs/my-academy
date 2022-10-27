@@ -63,24 +63,14 @@
         <div class="row row-height">
             <div class="col-xl-4 col-lg-4 content-left">
                 <div class="content-left-wrapper">
-                    <a href="index.html" id="logo"><img src="{{ asset('form/img/logo.png') }}" alt=""
-                            width="45" height="45"></a>
-                    <div id="social">
-                        <ul>
-                            <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#0"><i class="icon-google"></i></a></li>
-                            <li><a href="#0"><i class="icon-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- /social -->
+                    
                     <div>
                         <figure><img src="{{ asset('form/img/ibtassim.png') }}" alt="" class="img-fluid"
                                 width="270" height="270"></figure>
                         <h2>نادي ابتسم</h2>
                         <p>انظم لنادي ابتسم للمعرفة</p>
                     </div>
-                    <div class="copy">© 2020 Potenza</div>
+                    <div class="copy">برمجة من طرف اسماعيل طيبي</div>
                 </div>
                 <!-- /content-left-wrapper -->
             </div>
@@ -98,7 +88,7 @@
                         <div id="middle-wizard ">
                             <div class="step text-right">
                                 <h2 class="section_title text-right"> استمارة التسجيل</h2>
-                                <h3 class="main_question">: رجاءا املأ البيانات</h3>
+                                <h3 class="main_question"> رجاءا املأ البيانات</h3>
                                 <div class="form-group add_top_30">
                                     <label for="name">الاسم واللقب</label>
                                     <input type="text" name="name" id="name"
