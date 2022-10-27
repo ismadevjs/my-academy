@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstimaraController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TaalimController;
+use App\Http\Controllers\SanawatsController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,13 +27,21 @@ use Illuminate\Support\Facades\Route;
         
         // taalim
         Route::prefix('taalim')->group(function() {
-            Route::get('/taalim', [TaalimController::class, 'taalim'])->name('admin.taalim');
+            Route::get('/', [TaalimController::class, 'taalim'])->name('admin.taalim');
             Route::post('/taalim-add', [TaalimController::class, 'taalimPost'])->name('admin.taalim.add');
             Route::post('/taalim-edit', [TaalimController::class, 'taalimEdit'])->name('admin.taalim.update');
             Route::post('/taalim-delete', [TaalimController::class, 'taalimDelete'])->name('admin.taalim.delete');
             Route::post('/taalim-delete-all', [TaalimController::class, 'taalimDeleteAll'])->name('admin.taalim.delete.all');
         });
 
+         // sanawats
+         Route::prefix('sanawats')->group(function() {
+            Route::get('/', [SanawatsController::class, 'sanawats'])->name('admin.sanawats');
+            Route::post('/sanawats-add', [SanawatsController::class, 'sanawatsPost'])->name('admin.sanawats.add');
+            Route::post('/sanawats-edit', [SanawatsController::class, 'sanawatsEdit'])->name('admin.sanawats.update');
+            Route::post('/sanawats-delete', [SanawatsController::class, 'sanawatsDelete'])->name('admin.sanawats.delete');
+            Route::post('/sanawats-delete-all', [SanawatsController::class, 'sanawatsDeleteAll'])->name('admin.sanawats.delete.all');
+        });
 
         Route::prefix('atelier')->group(function() {
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');

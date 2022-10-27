@@ -52,6 +52,14 @@
         </li>
 
 
+        <li class="nav-main-item">
+          <a class="nav-main-link" href="{{route('admin.sanawats')}}">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">sanawats</span>
+          </a>
+        </li>
+
+
         <li class="nav-main-heading">Estimara management</li>
         <li class="nav-main-item open">
           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
