@@ -53,16 +53,37 @@ class SubjectController extends Controller
     }
     public function subjectsEdit(Request $request) {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'mawad_id' => 'required',
+            'type_id' => 'required',
         ]);
 
+       
+        if($request->mawad_id != "-") $data['mawad_id'] = $request->mawad_id;
+        if($request->type_id !=  "-") $data['type_id'] = $request->type_id;
         
+        
+        if($request->file != null) {
+            if($request->file('file')->extension() !== 'pdf') {
+                    return back()->withErrors('Please insert valid Pdf format');
+            }
+            $data['file'] = img($request, 'file', 'file');
+        }
+
+        // collecting data in data
+
         $data['name'] = $request->name;
-        if($request->mawad_id != "-")  $data['mawad_id'] = $request->mawad_id;
+        $data['year'] = $request->year;
         
-        $type = Type::find($request->id);
-        
-        $type->update($data);
+
+        $subject = Subject::find($request->id);
+
+        if ($subject) {
+            $subject->update($data);
+        } else {
+            return back()->withErrors('Somthing went wrong');
+        }
+
 
         return back()->withErrors('Data updated');
     }

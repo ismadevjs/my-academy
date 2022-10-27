@@ -235,35 +235,54 @@
                     <h4 class=" text-bold ">subject : <span class="badge bg-danger">{{$subject->name}}</span> Will be edited</h4>
                 </div>
                 <form action="{{route('admin.subjects.update')}}" method="POST" enctype="multipart/form-data">
-                    <div class="block-content">
-                      @csrf
-
-
-                      <div class="mb-4">
-                        <span>type : {{$subject->type->name}} </span>
+                  <div class="block-content">
+                    @csrf
+                    <span class="badge bg-info">{{$subject->mawad->name}}</span>
+                    <div class="mb-4">
+                     
+                      <label for="">mawad : </label>
+                      <select name="mawad_id" class="form-select" id="">
+                        <option value="-">-</option>
+                        @foreach ($mawads as $mawad)
+                            <option value="{{$mawad->id}}">{{$mawad->name}}</option>
+                        @endforeach
+                      </select>
+                  </div>
+                  <span class="badge bg-info">{{$subject->type->name}}</span>
+                  <div class="mb-4">
+                    
+                    
+                      <label for="">type : </label>
+                      <select name="type_id" class="form-select" id="">
+                        <option value="-">-</option>
+                        @foreach ($types as $type)
+                            <option value="{{$type->id}}">{{$type->name}}</option>
+                        @endforeach
+                      </select>
+                  </div>
+    
+    
+                    <div class="mb-4">
+                      <label for="">Name : </label>
+                      <input type="hidden" name="id" value="{{$subject->id}}" class="form-control">
+                      <input type="text" name="name" value="{{$subject->name}}" class="form-control">
                     </div>
-
-                      <div class="mb-4">
-                        <label for="">type : </label>
-                        <select name="type_id" class="form-select" id="">
-                          <option value="-">-</option>
-                          @foreach ($types as $type)
-                              <option value="{{$type->id}}">{{$type->name}}</option>
-                          @endforeach
-                        </select>
-                    </div>
-
-                      <div class="mb-4">
-                          <label for="">Name : </label>
-                          <input type="hidden" name="id" value="{{$subject->id}}" class="form-control">
-                          <input type="text" name="name" value="{{$subject->name}}" class="form-control">
-                      </div>
-                
-                   </div>
-                <div class="block-content block-content-full text-end bg-body">
-                  <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-sm btn-success" >save</button>
+    
+    
+                    <div class="mb-4">
+                      <label for="">file : </label>
+                      <input type="file" name="file" class="form-control">
+                  </div>
+    
+                  <div class="mb-4">
+                    <label for="">Year : </label>
+                    <input type="number" min="2000" max="2099" value="{{$subject->year}}" step="1" name="year" class="form-control">
                 </div>
+                 </div>
+              <div class="block-content block-content-full text-end bg-body">
+                <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-sm btn-success" >save</button>
+              </div>
               </form>
                 </div>
             </div>
