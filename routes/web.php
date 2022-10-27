@@ -9,6 +9,7 @@ use App\Http\Controllers\SanawatsController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
     
+
+    Route::prefix('api/v2')->group(function() {
+        Route::get('taalim', [ApiController::class, 'taalim'])->name('api.taalim');
+        Route::get('sanawat/{id}', [ApiController::class, 'sanawat'])->name('api.sanawat');
+        Route::get('mawad/{id}', [ApiController::class, 'mawad'])->name('api.mawad');
+        Route::get('type/{id}', [ApiController::class, 'type'])->name('api.type');
+        Route::get('subject/{id}/type/{type}', [ApiController::class, 'subject'])->name('api.subject');
+    });
+
     // admin
-    Route::prefix('/admin')->middleware('auth')->group(function() {
+    Route::prefix('admin')->middleware('auth')->group(function() {
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
         Route::get('/estimara', [AdminController::class, 'estimara'])->name('admin.estimara');
         Route::post('goback', [AdminController::class, 'goback'])->name('goback');
