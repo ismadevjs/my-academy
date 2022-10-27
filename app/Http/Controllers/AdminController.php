@@ -42,7 +42,7 @@ class AdminController extends Controller
 
         Atelier::create([
             'name' => $request->name,
-            'icon' => img($request, 'icon'),
+            'icon' => img($request, 'icon', 'Image'),
             'type' => json_encode($request->type)
         ]);
 
@@ -170,7 +170,7 @@ class AdminController extends Controller
                 }
             }
 
-            $data['icon'] = img($request, 'icon');
+            $data['icon'] = img($request, 'icon', 'Image');
         }
 
 
