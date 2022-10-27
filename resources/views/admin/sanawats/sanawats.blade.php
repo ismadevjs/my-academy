@@ -4,7 +4,7 @@
 <div class="mb-4">
     <div class="row">
       <div class=" mb-4 col-md-6 col-xl-4">
-        <a data-bs-toggle="modal" data-bs-target="#add-type" class="block block-rounded block-transparent block-link-pop bg-gd-leaf h-100 mb-0" href="javascript:void(0)">
+        <a data-bs-toggle="modal" data-bs-target="#add-type" class="block block-rounded block-transparent block-link-pop bg-gd-fruit h-100 mb-0" href="javascript:void(0)">
           <div class="block-content block-content-full d-flex align-items-center justify-content-between">
             <div>
               <p class="fs-lg fw-semibold mb-0 text-white">
