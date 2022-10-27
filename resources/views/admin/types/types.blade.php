@@ -10,7 +10,7 @@
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div>
                             <p class="fs-lg fw-semibold mb-0 text-white">
-                                Ajouter un type
+                                اضافة نوع
                             </p>
                             <p class="text-white-75 mb-0">
                                 {{-- UI Design --}}
@@ -48,11 +48,10 @@
 
     <div class="block block-rounded">
         <div class="block-header block-header-default">
-            <h3 class="block-title">List types</h3>
+            <h3 class="block-title">القائمة</h3>
             {{-- <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une type</button> --}}
             {{-- <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button> --}}
-            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">Delete
-                all</button>
+            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">حدف الكل</button>
             <div class="block-options">
                 <div class="block-options-item">
                 </div>
@@ -65,7 +64,7 @@
                 <div class="modal-content">
                     <div class="block block-rounded block-themed block-transparent mb-0">
                         <div class="block-header bg-primary-dark">
-                            <h3 class="block-title">Ajouter type</h3>
+                            <h3 class="block-title">اضافة نوع</h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                                     <i class="fa fa-fw fa-times"></i>
@@ -77,7 +76,7 @@
                                 @csrf
 
                                 <div class="mb-4">
-                                    <label for="">mawad : </label>
+                                    <label for="">المواد </label>
                                     <select name="mawad_id" class="form-select" id="">
                                         <option value="-">-</option>
                                         @foreach ($mawads as $mawad)
@@ -90,14 +89,14 @@
 
 
                                 <div class="mb-4">
-                                    <label for="">Name : </label>
+                                    <label for="">الاسم :  </label>
                                     <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="block-content block-content-full text-end bg-body">
                                 <button type="button" class="btn btn-sm btn-alt-secondary"
-                                    data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-sm btn-success">save</button>
+                                    data-bs-dismiss="modal">غلق</button>
+                                <button type="submit" class="btn btn-sm btn-success">حفظ</button>
                             </div>
                         </form>
                     </div>
@@ -119,7 +118,7 @@
 
 
                         <div class="block-header bg-primary-dark">
-                            <h3 class="block-title">Etes vous sure?</h3>
+                            <h3 class="block-title">هل انت متأكد</h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                                     <i class="fa fa-fw fa-times"></i>
@@ -127,14 +126,14 @@
                             </div>
                         </div>
                         <div class="block-content text-center ">
-                            <h4 class=" text-bold ">All types</span> Will be deleted</h4>
+                            <h4 class=" text-bold ">سيتم جدف الكل</h4>
                         </div>
                         <form action="{{ route('admin.types.delete.all') }}" method="POST">
                             @csrf
                             <div class="block-content block-content-full text-end bg-body">
                                 <button type="button" class="btn btn-sm btn-alt-secondary"
-                                    data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    data-bs-dismiss="modal">غلق</button>
+                                <button type="submit" class="btn btn-sm btn-danger">حدف</button>
                             </div>
                         </form>
 
@@ -160,11 +159,11 @@
                                     <label class="form-check-label" for="check-all"></label>
                                 </div>
                             </th>
-                            <th lass="d-none d-sm-table-cell">id</th>
-                            <th lass="d-none d-sm-table-cell">Name</th>
-                            <th lass="d-none d-sm-table-cell">mawad</th>
-                            <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%;">Actions</th>
+                            <th lass="d-none d-sm-table-cell">الرقم</th>
+                            <th lass="d-none d-sm-table-cell">الاسم</th>
+                            <th lass="d-none d-sm-table-cell">المواد</th>
+                            <th class="d-none d-sm-table-cell" style="width: 20%;">التاريخ</th>
+                            <th class="d-none d-sm-table-cell" style="width: 15%;">الاعدادات</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -194,9 +193,9 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <button class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#e-{{ $type->id }}">E</button>
+                                        data-bs-target="#e-{{ $type->id }}">تعديل</button>
                                     <button class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#d-{{ $type->id }}">D</button>
+                                        data-bs-target="#d-{{ $type->id }}">حدف</button>
                                 </td>
                             </tr>
 
@@ -208,7 +207,7 @@
                                     <div class="modal-content">
                                         <div class="block block-rounded block-themed block-transparent mb-0">
                                             <div class="block-header bg-primary-dark">
-                                                <h3 class="block-title">Etes vous sure?</h3>
+                                                <h3 class="block-title">هل انت متأكد</h3>
                                                 <div class="block-options">
                                                     <button type="button" class="btn-block-option"
                                                         data-bs-dismiss="modal" aria-label="Close">
@@ -217,8 +216,8 @@
                                                 </div>
                                             </div>
                                             <div class="block-content text-center ">
-                                                <h4 class=" text-bold ">type : <span
-                                                        class="badge bg-danger">{{ $type->name }}</span> Will be edited
+                                                <h4 class=" text-bold ">النوع <span
+                                                        class="badge bg-danger">{{ $type->name }}</span> سيتم الحدف
                                                 </h4>
                                             </div>
                                             <form action="{{ route('admin.types.update') }}" method="POST"
@@ -228,11 +227,11 @@
 
 
                                                     <div class="mb-4">
-                                                        <span>mawad : {{ $type->mawad->name }} </span>
+                                                        <span> {{ $type->mawad->name }} المواد  </span>
                                                     </div>
 
                                                     <div class="mb-4">
-                                                        <label for="">mawad : </label>
+                                                        <label for="">المواد </label>
                                                         <select name="mawad_id" class="form-select" id="">
                                                             <option value="-">-</option>
                                                             @foreach ($mawads as $mawad)
@@ -243,7 +242,7 @@
                                                     </div>
 
                                                     <div class="mb-4">
-                                                        <label for="">Name : </label>
+                                                        <label for="">الاسم </label>
                                                         <input type="hidden" name="id" value="{{ $type->id }}"
                                                             class="form-control">
                                                         <input type="text" name="name" value="{{ $type->name }}"
@@ -253,8 +252,8 @@
                                                 </div>
                                                 <div class="block-content block-content-full text-end bg-body">
                                                     <button type="button" class="btn btn-sm btn-alt-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-sm btn-success">save</button>
+                                                        data-bs-dismiss="modal">غلق</button>
+                                                    <button type="submit" class="btn btn-sm btn-success">حفظ</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -274,7 +273,7 @@
                                     <div class="modal-content">
                                         <div class="block block-rounded block-themed block-transparent mb-0">
                                             <div class="block-header bg-primary-dark">
-                                                <h3 class="block-title">Etes vous sure?</h3>
+                                                <h3 class="block-title">هل انت متأكد</h3>
                                                 <div class="block-options">
                                                     <button type="button" class="btn-block-option"
                                                         data-bs-dismiss="modal" aria-label="Close">
@@ -283,8 +282,8 @@
                                                 </div>
                                             </div>
                                             <div class="block-content text-center ">
-                                                <h4 class=" text-bold ">type : <span
-                                                        class="badge bg-danger">{{ $type->name }}</span> Will be deleted
+                                                <h4 class=" text-bold ">النوع <span
+                                                        class="badge bg-danger">{{ $type->name }}</span> سيتم الحدف
                                                 </h4>
                                             </div>
                                             <form action="{{ route('admin.types.delete') }}" method="POST">
@@ -295,8 +294,8 @@
                                                 </div>
                                                 <div class="block-content block-content-full text-end bg-body">
                                                     <button type="button" class="btn btn-sm btn-alt-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                        data-bs-dismiss="modal">غلق</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">حدف</button>
                                                 </div>
                                             </form>
                                         </div>

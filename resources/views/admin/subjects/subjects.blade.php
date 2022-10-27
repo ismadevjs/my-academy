@@ -8,7 +8,7 @@
           <div class="block-content block-content-full d-flex align-items-center justify-content-between">
             <div>
               <p class="fs-lg fw-semibold mb-0 text-white">
-                Ajouter un subject
+                اضافة موضوع
               </p>
               <p class="text-white-75 mb-0">
                 {{-- UI Design --}}
@@ -46,10 +46,10 @@
   
   <div class="block block-rounded">
   <div class="block-header block-header-default">
-    <h3 class="block-title">List subjects</h3>
+    <h3 class="block-title">القائمة</h3>
     {{-- <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modal-block-slideleft">Ajouter une subject</button> --}}
     {{-- <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#add-type">Ajouter un type</button> --}}
-    <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">Delete all</button>
+    <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#delete-all">حدف الكل</button>
     <div class="block-options">
       <div class="block-options-item">
       </div>
@@ -61,7 +61,7 @@
       <div class="modal-content">
         <div class="block block-rounded block-themed block-transparent mb-0">
           <div class="block-header bg-primary-dark">
-            <h3 class="block-title">Ajouter subject</h3>
+            <h3 class="block-title"> اضافة موضوع</h3>
             <div class="block-options">
               <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                 <i class="fa fa-fw fa-times"></i>
@@ -73,7 +73,7 @@
                 @csrf
 
                 <div class="mb-4">
-                  <label for="">mawad : </label>
+                  <label for="">المواد </label>
                   <select name="mawad_id" class="form-select" id="">
                     <option value="-">-</option>
                     @foreach ($mawads as $mawad)
@@ -83,7 +83,7 @@
               </div>
                
               <div class="mb-4">
-                  <label for="">type : </label>
+                  <label for="">النوع </label>
                   <select name="type_id" class="form-select" id="">
                     <option value="-">-</option>
                     @foreach ($types as $type)
@@ -94,24 +94,24 @@
 
 
                 <div class="mb-4">
-                    <label for="">Name : </label>
+                    <label for="">الاسم </label>
                     <input type="text" name="name" class="form-control">
                 </div>
 
 
                 <div class="mb-4">
-                  <label for="">file : </label>
+                  <label for="">الملف </label>
                   <input type="file" name="file" class="form-control">
               </div>
 
               <div class="mb-4">
-                <label for="">Year : </label>
+                <label for="">العام </label>
                 <input type="number" min="2000" max="2099" value="2022" step="1" name="year" class="form-control">
             </div>
              </div>
           <div class="block-content block-content-full text-end bg-body">
-            <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-sm btn-success" >save</button>
+            <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">غلق</button>
+            <button type="submit" class="btn btn-sm btn-success" >حفظ</button>
           </div>
         </form>
         </div>
@@ -132,7 +132,7 @@
          
         
             <div class="block-header bg-primary-dark">
-              <h3 class="block-title">Etes vous sure?</h3>
+              <h3 class="block-title">خل انت متأكد</h3>
               <div class="block-options">
                 <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                   <i class="fa fa-fw fa-times"></i>
@@ -140,13 +140,13 @@
               </div>
             </div>
             <div class="block-content text-center ">
-              <h4 class=" text-bold ">All subjects</span> Will be deleted</h4>
+              <h4 class=" text-bold ">سيتم جدف كل المواضيع</h4>
             </div>
             <form action="{{route('admin.subjects.delete.all')}}" method="POST">
               @csrf
             <div class="block-content block-content-full text-end bg-body">
-              <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
+              <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">اغلاق النافدة</button>
+              <button type="submit" class="btn btn-sm btn-danger" >حدف</button>
             </div>
           </form>
       
@@ -171,14 +171,14 @@
                 <label class="form-check-label" for="check-all"></label>
               </div>
             </th>
-            <th lass="d-none d-sm-table-cell">id</th>
-            <th lass="d-none d-sm-table-cell">Name</th>
-            <th lass="d-none d-sm-table-cell">mawad</th>
-            <th lass="d-none d-sm-table-cell">type</th>
-            <th lass="d-none d-sm-table-cell">file</th>
-            <th lass="d-none d-sm-table-cell">year</th>
-            <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
-            <th class="d-none d-sm-table-cell" style="width: 15%;">Actions</th>
+            <th lass="d-none d-sm-table-cell">الرقم</th>
+            <th lass="d-none d-sm-table-cell">الاسم</th>
+            <th lass="d-none d-sm-table-cell">المواد</th>
+            <th lass="d-none d-sm-table-cell">النوع</th>
+            <th lass="d-none d-sm-table-cell">الملف</th>
+            <th lass="d-none d-sm-table-cell">العام</th>
+            <th class="d-none d-sm-table-cell" style="width: 20%;">الناريخ</th>
+            <th class="d-none d-sm-table-cell" style="width: 15%;">اعدادات</th>
           </tr>
         </thead>
         <tbody>
@@ -204,7 +204,7 @@
                 <span class="">{{ $subject->type->name }}</span>
               </td>
               <td>
-                <a class="btn btn-alt-primary" href="{{ asset("public/file/".$subject->file) }}" download>Download</a>
+                <a class="btn btn-alt-primary" href="{{ asset("public/file/".$subject->file) }}" download>تحميل</a>
               </td>
               <td>{{ $subject->year }}</td>
             
@@ -212,8 +212,8 @@
               <em class="fs-sm text-muted">{{ $subject->created_at->diffForHumans() }}</em>
             </td>
             <td class="d-none d-sm-table-cell">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#e-{{$subject->id}}">E</button>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#d-{{$subject->id}}">D</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#e-{{$subject->id}}">تعديل</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#d-{{$subject->id}}">حدف</button>
             </td>
           </tr>
           
@@ -224,7 +224,7 @@
             <div class="modal-content">
                 <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Etes vous sure?</h3>
+                    <h3 class="block-title">هل انت متأكد؟</h3>
                     <div class="block-options">
                     <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-fw fa-times"></i>
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="block-content text-center ">
-                    <h4 class=" text-bold ">subject : <span class="badge bg-danger">{{$subject->name}}</span> Will be edited</h4>
+                    <h4 class=" text-bold "> <span class="badge bg-danger">{{$subject->name}}</span> سيتم تعديل</h4>
                 </div>
                 <form action="{{route('admin.subjects.update')}}" method="POST" enctype="multipart/form-data">
                   <div class="block-content">
@@ -240,7 +240,7 @@
                     <span class="badge bg-info">{{$subject->mawad->name}}</span>
                     <div class="mb-4">
                      
-                      <label for="">mawad : </label>
+                      <label for="">المواد : </label>
                       <select name="mawad_id" class="form-select" id="">
                         <option value="-">-</option>
                         @foreach ($mawads as $mawad)
@@ -252,7 +252,7 @@
                   <div class="mb-4">
                     
                     
-                      <label for="">type : </label>
+                      <label for="">النوع </label>
                       <select name="type_id" class="form-select" id="">
                         <option value="-">-</option>
                         @foreach ($types as $type)
@@ -263,25 +263,25 @@
     
     
                     <div class="mb-4">
-                      <label for="">Name : </label>
+                      <label for="">الاسم </label>
                       <input type="hidden" name="id" value="{{$subject->id}}" class="form-control">
                       <input type="text" name="name" value="{{$subject->name}}" class="form-control">
                     </div>
     
     
                     <div class="mb-4">
-                      <label for="">file : </label>
+                      <label for="">الملف : </label>
                       <input type="file" name="file" class="form-control">
                   </div>
     
                   <div class="mb-4">
-                    <label for="">Year : </label>
+                    <label for="">العام </label>
                     <input type="number" min="2000" max="2099" value="{{$subject->year}}" step="1" name="year" class="form-control">
                 </div>
                  </div>
               <div class="block-content block-content-full text-end bg-body">
-                <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-sm btn-success" >save</button>
+                <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">غلق</button>
+                <button type="submit" class="btn btn-sm btn-success" >حفظ</button>
               </div>
               </form>
                 </div>
@@ -300,7 +300,7 @@
         <div class="modal-content">
           <div class="block block-rounded block-themed block-transparent mb-0">
             <div class="block-header bg-primary-dark">
-              <h3 class="block-title">Etes vous sure?</h3>
+              <h3 class="block-title">هل انت متأكد</h3>
               <div class="block-options">
                 <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                   <i class="fa fa-fw fa-times"></i>
@@ -308,7 +308,7 @@
               </div>
             </div>
             <div class="block-content text-center ">
-              <h4 class=" text-bold ">subject : <span class="badge bg-danger">{{$subject->name}}</span> Will be deleted</h4>
+              <h4 class=" text-bold "><span class="badge bg-danger">{{$subject->name}}</span> سيتم حدف </h4>
             </div>
             <form action="{{route('admin.subjects.delete')}}" method="POST">
                 <div class="block-content">
@@ -316,8 +316,8 @@
                       <input type="hidden" name="id" value="{{$subject->id}}" class="form-control">
                </div>
             <div class="block-content block-content-full text-end bg-body">
-              <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
+              <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">غلق</button>
+              <button type="submit" class="btn btn-sm btn-danger" >حدف</button>
             </div>
           </form>
           </div>
