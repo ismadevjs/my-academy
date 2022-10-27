@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->integer('mawad_id');
-            $table->integer('types_id');
+            $table->integer('type_id');
             $table->string('name');
             $table->string('file');
             $table->string('year');
