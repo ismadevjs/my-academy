@@ -77,6 +77,12 @@
         </li>
 
 
+        <li class="nav-main-item">
+          <a class="nav-main-link @if (Route::currentRouteName() == 'admin.subjects') active @endif" href="{{route('admin.subjects')}}">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">Subjects</span>
+          </a>
+        </li>
 
         <li class="nav-main-heading">Estimara management</li>
         <li class="nav-main-item open">

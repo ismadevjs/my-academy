@@ -6,6 +6,7 @@ use App\Http\Controllers\mawadController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TaalimController;
 use App\Http\Controllers\SanawatsController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,16 @@ use Illuminate\Support\Facades\Route;
             Route::post('/types-delete', [TypeController::class, 'typesDelete'])->name('admin.types.delete');
             Route::post('/types-delete-all', [TypeController::class, 'typesDeleteAll'])->name('admin.types.delete.all');
         });
+
+        // subjects
+        Route::prefix('subjects')->group(function() {
+            Route::get('/', [SubjectController::class, 'subjects'])->name('admin.subjects');
+            Route::post('/subjects-add', [SubjectController::class, 'subjectsPost'])->name('admin.subjects.add');
+            Route::post('/subjects-edit', [SubjectController::class, 'subjectsEdit'])->name('admin.subjects.update');
+            Route::post('/subjects-delete', [SubjectController::class, 'subjectsDelete'])->name('admin.subjects.delete');
+            Route::post('/subjects-delete-all', [SubjectController::class, 'subjectsDeleteAll'])->name('admin.subjects.delete.all');
+        });
+        
 
 
         Route::prefix('atelier')->group(function() {
