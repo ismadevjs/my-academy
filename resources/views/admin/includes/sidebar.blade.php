@@ -55,7 +55,15 @@
         <li class="nav-main-item">
           <a class="nav-main-link" href="{{route('admin.sanawats')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
-            <span class="nav-main-link-name">sanawats</span>
+            <span class="nav-main-link-name">Sanawats</span>
+          </a>
+        </li>
+
+
+        <li class="nav-main-item">
+          <a class="nav-main-link" href="{{route('admin.mawads')}}">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">Mawads</span>
           </a>
         </li>
 

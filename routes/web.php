@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstimaraController;
+use App\Http\Controllers\mawadController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TaalimController;
 use App\Http\Controllers\SanawatsController;
@@ -42,6 +43,16 @@ use Illuminate\Support\Facades\Route;
             Route::post('/sanawats-delete', [SanawatsController::class, 'sanawatsDelete'])->name('admin.sanawats.delete');
             Route::post('/sanawats-delete-all', [SanawatsController::class, 'sanawatsDeleteAll'])->name('admin.sanawats.delete.all');
         });
+
+         // mawads
+         Route::prefix('mawads')->group(function() {
+            Route::get('/', [mawadController::class, 'mawads'])->name('admin.mawads');
+            Route::post('/mawads-add', [mawadController::class, 'mawadsPost'])->name('admin.mawads.add');
+            Route::post('/mawads-edit', [mawadController::class, 'mawadsEdit'])->name('admin.mawads.update');
+            Route::post('/mawads-delete', [mawadController::class, 'mawadsDelete'])->name('admin.mawads.delete');
+            Route::post('/mawads-delete-all', [mawadController::class, 'mawadsDeleteAll'])->name('admin.mawads.delete.all');
+        });
+
 
         Route::prefix('atelier')->group(function() {
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');

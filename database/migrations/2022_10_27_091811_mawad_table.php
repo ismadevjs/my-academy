@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sanawats', function (Blueprint $table) {
+        Schema::create('mawads', function (Blueprint $table) {
             $table->id();
-            $table->integer('taalim_id');
+            $table->integer('sanawat_id');
             $table->string('name');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('sanawats');
+        Schema::drop('mawads');
     }
 };
