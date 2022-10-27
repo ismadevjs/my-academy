@@ -67,10 +67,10 @@ class SubjectController extends Controller
         return back()->withErrors('Data updated');
     }
     public function subjectsDelete(Request $request) {
-        $type = Subject::find($request->id);
-        if(!$type) return back()->withErrors('Somthing went wrong');
-        $type->delete();
-        return back()->withErrors($type->name . ' deleted');
+        $subject = Subject::find($request->id);
+        if(!$subject) return back()->withErrors('Somthing went wrong');
+        $subject->delete();
+        return back()->withErrors($subject->name . ' deleted');
     }
     public function subjectsDeleteAll(Request $request) {
         Subject::truncate();

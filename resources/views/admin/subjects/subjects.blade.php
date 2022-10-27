@@ -203,7 +203,9 @@
               <td class="d-none d-sm-table-cell">
                 <span class="">{{ $subject->type->name }}</span>
               </td>
-              <td>{{ $subject->file }}</td>
+              <td>
+                <a class="btn btn-alt-primary" href="{{ asset("public/file/".$subject->file) }}" download>Download</a>
+              </td>
               <td>{{ $subject->year }}</td>
             
             <td class="d-none d-sm-table-cell">

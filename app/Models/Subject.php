@@ -23,6 +23,6 @@ class Subject extends Model
     }
 
     public function mawad() {
-        return $this->hasOne(Type::class, 'id', 'mawad_id');
+        return $this->hasOne(Mawad::class, 'id', 'mawad_id');
     }
 }
