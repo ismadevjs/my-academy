@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+
+    protected $table = 'types';
+
+    protected $fillable = [
+        'name',
+        'mawad_id'
+    ];
+
+
+    
+    public function mawad() {
+        return $this->hasOne(mawad::class, 'id', 'mawad_id');
+    }
+
+
 }

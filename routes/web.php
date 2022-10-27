@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TaalimController;
 use App\Http\Controllers\SanawatsController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,16 @@ use Illuminate\Support\Facades\Route;
             Route::post('/mawads-edit', [mawadController::class, 'mawadsEdit'])->name('admin.mawads.update');
             Route::post('/mawads-delete', [mawadController::class, 'mawadsDelete'])->name('admin.mawads.delete');
             Route::post('/mawads-delete-all', [mawadController::class, 'mawadsDeleteAll'])->name('admin.mawads.delete.all');
+        });
+
+
+        // types
+        Route::prefix('types')->group(function() {
+            Route::get('/', [TypeController::class, 'types'])->name('admin.types');
+            Route::post('/types-add', [TypeController::class, 'typesPost'])->name('admin.types.add');
+            Route::post('/types-edit', [TypeController::class, 'typesEdit'])->name('admin.types.update');
+            Route::post('/types-delete', [TypeController::class, 'typesDelete'])->name('admin.types.delete');
+            Route::post('/types-delete-all', [TypeController::class, 'typesDeleteAll'])->name('admin.types.delete.all');
         });
 
 

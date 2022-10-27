@@ -38,14 +38,14 @@
     <div class="content-side">
       <ul class="nav-main">
         <li class="nav-main-item">
-          <a class="nav-main-link active" href="{{route('dashboard')}}">
+          <a class="nav-main-link @if (Route::currentRouteName() == 'dashboard') active @endif" href="{{route('dashboard')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
             <span class="nav-main-link-name">Dashboard</span>
           </a>
         </li>
 
         <li class="nav-main-item">
-          <a class="nav-main-link" href="{{route('admin.taalim')}}">
+          <a class="nav-main-link @if (Route::currentRouteName() == 'admin.taalim') active @endif" href="{{route('admin.taalim')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
             <span class="nav-main-link-name">ta3lim</span>
           </a>
@@ -53,19 +53,29 @@
 
 
         <li class="nav-main-item">
-          <a class="nav-main-link" href="{{route('admin.sanawats')}}">
+          <a class="nav-main-link  @if (Route::currentRouteName() == 'admin.sanawats') active @endif" href="{{route('admin.sanawats')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
             <span class="nav-main-link-name">Sanawats</span>
           </a>
         </li>
 
+        
 
         <li class="nav-main-item">
-          <a class="nav-main-link" href="{{route('admin.mawads')}}">
+          <a class="nav-main-link @if (Route::currentRouteName() == 'admin.mawads') active @endif" href="{{route('admin.mawads')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
             <span class="nav-main-link-name">Mawads</span>
           </a>
         </li>
+
+
+        <li class="nav-main-item">
+          <a class="nav-main-link @if (Route::currentRouteName() == 'admin.types') active @endif" href="{{route('admin.types')}}">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">Types</span>
+          </a>
+        </li>
+
 
 
         <li class="nav-main-heading">Estimara management</li>
@@ -76,12 +86,12 @@
             </a>
             <ul class="nav-main-submenu">
             <li class="nav-main-item">
-              <a class="nav-main-link" href="{{route('admin.estimara')}}">
+              <a class="nav-main-link @if (Route::currentRouteName() == 'admin.estimara') active @endif " href="{{route('admin.estimara')}}">
                <span class="nav-main-link-name">list</span>
               </a>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link" href="{{route('admin.atelier')}}">
+              <a class="nav-main-link @if (Route::currentRouteName() == 'admin.atelier') active @endif " href="{{route('admin.atelier')}}">
                 <span class="nav-main-link-name">Atelier</span>
               </a>
             </li>

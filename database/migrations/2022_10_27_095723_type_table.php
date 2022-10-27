@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('types', function (Blueprint $table) {
+            $table->id();
+            $table->integer('mawad_id');
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('types');
     }
 };
