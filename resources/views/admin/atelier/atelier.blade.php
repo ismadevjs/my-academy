@@ -339,7 +339,7 @@
               <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#d-{{$atelier->id}}">D</button>
           </td>
         </tr>
-  
+        
 
          <!-- Slide Left Block Modal chack suppressions -->
          <div class="modal fade" id="e-{{$atelier->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-slideleft" aria-hidden="true">

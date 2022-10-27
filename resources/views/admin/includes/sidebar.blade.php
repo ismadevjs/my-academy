@@ -38,11 +38,20 @@
     <div class="content-side">
       <ul class="nav-main">
         <li class="nav-main-item">
-          <a class="nav-main-link active" href="db_dark.html">
+          <a class="nav-main-link active" href="{{route('dashboard')}}">
             <i class="nav-main-link-icon fa fa-rocket"></i>
             <span class="nav-main-link-name">Dashboard</span>
           </a>
         </li>
+
+        <li class="nav-main-item">
+          <a class="nav-main-link" href="{{route('admin.taalim')}}">
+            <i class="nav-main-link-icon fa fa-rocket"></i>
+            <span class="nav-main-link-name">ta3lim</span>
+          </a>
+        </li>
+
+
         <li class="nav-main-heading">Estimara management</li>
         <li class="nav-main-item open">
           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">

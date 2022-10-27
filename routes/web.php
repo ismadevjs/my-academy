@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstimaraController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\TaalimController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,17 @@ use Illuminate\Support\Facades\Route;
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
         Route::get('/estimara', [AdminController::class, 'estimara'])->name('admin.estimara');
         Route::post('goback', [AdminController::class, 'goback'])->name('goback');
+        
+        // taalim
+        Route::prefix('taalim')->group(function() {
+            Route::get('/taalim', [TaalimController::class, 'taalim'])->name('admin.taalim');
+            Route::post('/taalim-add', [TaalimController::class, 'taalimPost'])->name('admin.taalim.add');
+            Route::post('/taalim-edit', [TaalimController::class, 'taalimEdit'])->name('admin.taalim.update');
+            Route::post('/taalim-delete', [TaalimController::class, 'taalimDelete'])->name('admin.taalim.delete');
+            Route::post('/taalim-delete-all', [TaalimController::class, 'taalimDeleteAll'])->name('admin.taalim.delete.all');
+        });
+
+
         Route::prefix('atelier')->group(function() {
             Route::get('/', [AdminController::class, 'atelier'])->name('admin.atelier');
             Route::post('/add', [AdminController::class, 'atelierAdd'])->name('admin.atelier.add');
