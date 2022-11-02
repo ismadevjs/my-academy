@@ -76,16 +76,21 @@
                                 @csrf
 
                                 <div class="mb-4">
-                                    <label for="">المواد </label>
-                                    <select name="mawad_id" class="form-select" id="">
+                                    <label for="">السنوات </label>
+                                    <select name="sanawat_id" class="form-select" id="selectedMawad">
                                         <option value="-">-</option>
-                                        @foreach ($mawads as $mawad)
-                                            <option value="{{ $mawad->id }}">{{ $mawad->name }}
-                                                ({{ $mawad->sanawatss->name }})
-                                            </option>
+                                        @foreach ($sanawats as $sanawat)
+                                            <option value="{{ $sanawat->id }}">{{ $sanawat->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="mb-4" >
+                                    <label for="">المواد </label>
+                                    <select name="mawad_id" class="form-select" id="addSubjects">
+                                      
+                                    </select>
+                                  </div>
 
 
                                 <div class="mb-4">
@@ -312,3 +317,22 @@
     {{ $types->links() }}
     <!-- END Checkable Table -->
 @endsection
+@push('scripts')
+   <script>
+ $('#selectedMawad').on('change', function() {
+  $('#addSubjects').html('');
+    fetch('/api/v2/mawad/' + $(this).val())
+      .then(res => res.json())
+      .then(r => {
+        r.map(data => {
+          
+          $('#addSubjects').append(`
+              <option value="${data.id}">${data.name}</option>
+          `)
+        })
+      })
+      .catch(e => console.log(e))
+      // alert($(this).val());
+    })
+    </script>
+@endpush

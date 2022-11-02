@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mawad;
+use App\Models\Sanawat;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class TypeController extends Controller
     public function types() {
         $types = Type::latest()->paginate(25);
         $mawads = Mawad::all();
-        return view ('admin.types.types', compact('types', 'mawads'));
+        $sanawats = Sanawat::all();
+        return view ('admin.types.types', compact('types', 'mawads', 'sanawats'));
     }
     public function typesPost(Request $request) {
         $request->validate([
