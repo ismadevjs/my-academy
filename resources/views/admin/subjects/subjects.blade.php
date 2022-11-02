@@ -74,22 +74,18 @@
 
                 <div class="mb-4">
                   <label for="">المواد </label>
-                  <select name="mawad_id" class="form-select" id="">
+                  <select name="mawad_id" class="form-select" id="selectedMawad">
                     <option value="-">-</option>
                     @foreach ($mawads as $mawad)
                         <option value="{{$mawad->id}}">{{$mawad->name}}</option>
                     @endforeach
                   </select>
               </div>
-               
-              <div class="mb-4">
-                  <label for="">النوع </label>
-                  <select name="type_id" class="form-select" id="">
-                    <option value="-">-</option>
-                    @foreach ($types as $type)
-                        <option value="{{$type->id}}">{{$type->name}}</option>
-                    @endforeach
-                  </select>
+              <div class="mb-4" >
+                <label for="">النوع </label>
+                <select name="type_id" class="form-select" id="addSubjects">
+                  
+                </select>
               </div>
 
 
@@ -204,7 +200,7 @@
                 <span class="">{{ $subject->type->name }}</span>
               </td>
               <td>
-                <a class="btn btn-alt-primary" href="{{ asset("public/file/".$subject->file) }}" download>تحميل</a>
+                <a class="btn btn-alt-primary" href="{{ asset("/public/public/file/".$subject->file) }}" download>تحميل</a>
               </td>
               <td>{{ $subject->year }}</td>
             
@@ -335,4 +331,25 @@
   </div>
   {{ $subjects->links() }}
   <!-- END Checkable Table -->
+
 @endsection
+
+@push('scripts')
+   <script>
+ $('#selectedMawad').on('change', function() {
+  $('#addSubjects').html('');
+    fetch('/api/v2/type/' + $(this).val())
+      .then(res => res.json())
+      .then(r => {
+        r.map(data => {
+          
+          $('#addSubjects').append(`
+              <option value="${data.id}">${data.name}</option>
+          `)
+        })
+      })
+      .catch(e => console.log(e))
+      // alert($(this).val());
+    })
+    </script>
+@endpush

@@ -19,7 +19,7 @@ class Type extends Model
 
     
     public function mawad() {
-        return $this->hasOne(mawad::class, 'id', 'mawad_id');
+        return $this->hasOne(Mawad::class, 'id', 'mawad_id');
     }
 
 

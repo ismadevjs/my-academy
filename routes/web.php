@@ -98,24 +98,24 @@ use Illuminate\Support\Facades\Route;
             Route::post('/atelier-doross-list-delete', [AdminController::class, 'atelierDorossDelete'])->name('admin.atelier.doross.delete');
             Route::post('/atelier-doross-list-update', [AdminController::class, 'atelierDorossUpdate'])->name('admin.atelier.doross.update');
         });
+        // teachers
+        Route::prefix('/teachers')->middleware('auth')->group(function() {
+            Route::get('/', [TeacherController::class, 'dashboard'])->name('teachers');
+        });
+    
+        // students
+        Route::prefix('/students')->middleware('auth')->group(function() {
+            Route::get('/', [StudentsController::class, 'dashboard'])->name('students');
+        });
     });
-    // teachers
-    Route::prefix('/teachers')->middleware('auth')->group(function() {
-        Route::get('/', [TeacherController::class, 'dashboard'])->name('teachers');
-    });
-
-    // students
-    Route::prefix('/students')->middleware('auth')->group(function() {
-        Route::get('/', [StudentsController::class, 'dashboard'])->name('students');
-    });
-   
-
-    Route::prefix('/')->middleware('guest')->group(function() {
     //estimara
         Route::prefix('estimara')->group(function() {
             Route::get('/', [EstimaraController::class, 'step1'])->name('estimara');
         });
-    });
+   
+
+    
+    
 
 
 Route::get('/dashboard', function () {
