@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class TypeController extends Controller
 {
     public function types() {
-        $types = Type::latest()->paginate(25);
+        $types = Type::latest()->paginate(3);
         $mawads = Mawad::all();
         $sanawats = Sanawat::all();
         return view ('admin.types.types', compact('types', 'mawads', 'sanawats'));

@@ -10,6 +10,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\ApiController;
+use App\Models\Estimara;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -111,8 +112,12 @@ use Illuminate\Support\Facades\Route;
     //estimara
         Route::prefix('estimara')->group(function() {
             Route::get('/', [EstimaraController::class, 'step1'])->name('estimara');
+            Route::post('/', [EstimaraController::class, 'post'])->name('estimara.post');
+            Route::get('thankyou', [EstimaraController::class, 'thankyou'])->name('estimara.thankyou');
         });
    
+
+
 
     
     

@@ -112,6 +112,7 @@
               @csrf
 
               <select type="text" name="parent" class="form-select">
+                <option value="-">-</option>
                 @foreach ($ateliertypes as $type)
                    <option value="{{$type->id}}">{{$type->name}}</option>
                    @foreach ($type->parents as  $parent)

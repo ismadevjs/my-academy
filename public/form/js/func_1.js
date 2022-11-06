@@ -1,7 +1,7 @@
 /*  Wizard */
 jQuery(function($) {
     "use strict";
-    $('form#wrapped').attr('action', 'send_email_1.php');
+    // $('form#wrapped').attr('action', '/estimara');
     $("#wizard_container").wizard({
         stepsWrapper: "#wrapped",
         submit: ".submit",
@@ -46,25 +46,7 @@ $("#wizard_container").wizard({
     }
 });
 
-/* File upload validate size and file type - For details: https://github.com/snyderp/jquery.validate.file*/
-$("form#wrapped")
-    .validate({
-        rules: {
-            fileupload: {
-                fileType: {
-                    types: ["pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
-                },
-                maxFileSize: {
-                    "unit": "KB",
-                    "size": 150
-                },
-                minFileSize: {
-                    "unit": "KB",
-                    "size": "2"
-                }
-            }
-        }
-    });
+
 
 // Input name and email value
 function getVals(formControl, controlType) {
