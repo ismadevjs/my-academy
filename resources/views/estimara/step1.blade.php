@@ -115,6 +115,11 @@
                                     <input type="text" name="phone" id="phone"
                                         class="form-control required">
                                 </div>
+                                <div class="form-group add_top_30">
+                                    <label for="name">رابط حساب الفيسبوك</label>
+                                    <input type="text" name="facebook" id="name"
+                                        class="form-control required" onchange="getVals(this, 'name_field');">
+                                </div>
                                 <label>الجنس</label>
                                 <div class="form-group radio_input">
                                     <label class="container_radio mr-3">دكر

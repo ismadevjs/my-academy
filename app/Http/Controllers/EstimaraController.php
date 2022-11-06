@@ -34,6 +34,7 @@ class EstimaraController extends Controller
                 }
 
                 $data['name'] = $request->name; 
+                $data['facebook'] = $request->facebook; 
                 $data['birth'] = $request->birth;
                 $data['addr'] = $request->addr;
                 $data['email'] = $request->email;

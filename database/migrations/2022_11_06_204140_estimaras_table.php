@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('estimaras', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('facebook');
             $table->string('birth');
             $table->string('avatar');
             $table->string('addr');
